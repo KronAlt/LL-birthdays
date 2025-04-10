@@ -9,9 +9,9 @@
 	{"name": "小泉花陽", "name_en": "Hanayo Koizumi","birth": "0117", "type": "C", "group": "muse", "image": "https://i.idol.st/u/idol/3Koizumi-Hanayo-kdVFUI.png"},
 	{"name": "矢澤にこ", "name_en": "Nico Yazawa","birth": "0722", "type": "C", "group": "muse", "image": "https://i.idol.st/u/idol/18Yazawa-Nico-agidhY.png"},
 	
-	{"name": "綺羅ツバサ", "name_en": "Tsubasa Kira","birth": "0000", "type": "C", "group": "a-rise", "rival": true, "image": "https://i.idol.st/u/idol/46Kira-Tsubasa-yMqjxx.png"},
-	{"name": "統堂英玲奈", "name_en": "Erena Toudou","birth": "0000", "type": "C", "group": "a-rise", "rival": true, "image": "https://i.idol.st/u/idol/99Toudou-Erena-l39Dhy.png"},
-	{"name": "優木あんじゅ", "name_en": "Anju Yuki","birth": "0000", "type": "C", "group": "a-rise", "rival": true, "image": "https://i.idol.st/u/idol/111Yuki-Anju-N6q54P.png"},
+	{"name": "綺羅ツバサ", "name_en": "Tsubasa Kira","birth": "9999", "type": "C", "group": "a-rise", "rival": true, "image": "https://i.idol.st/u/idol/46Kira-Tsubasa-yMqjxx.png"},
+	{"name": "統堂英玲奈", "name_en": "Erena Toudou","birth": "9999", "type": "C", "group": "a-rise", "rival": true, "image": "https://i.idol.st/u/idol/99Toudou-Erena-l39Dhy.png"},
+	{"name": "優木あんじゅ", "name_en": "Anju Yuki","birth": "9999", "type": "C", "group": "a-rise", "rival": true, "image": "https://i.idol.st/u/idol/111Yuki-Anju-N6q54P.png"},
 	
 
 	{"name": "新田恵海", "name_en": "Emi Nitta","birth": "1210", "type": "V", "character": "高坂穂乃果", "group": "muse", "tips": "μ's 高坂穂乃果 役", "image": "https://i.idol.st/u/voiceactress/tthumb/4Nitta-Emi-GuHpgY.jpg"},
@@ -36,8 +36,8 @@
 	{"name": "国木田花丸", "name_en": "Hanamaru Kunikida","birth": "0304", "type": "C", "group": "aqours", "image": "https://i.idol.st/u/idol/5Kunikida-Hanamaru-nqbGF1.png"},
 	{"name": "小原鞠莉", "name_en": "Mari Ohara","birth": "0613", "type": "C", "group": "aqours", "image": "https://i.idol.st/u/idol/11Ohara-Mari-npxzmE.png"},
 	{"name": "黒澤ルビィ", "name_en": "Ruby Kurosawa","birth": "0921", "type": "C", "group": "aqours", "image": "https://i.idol.st/u/idol/7Kurosawa-Ruby-UbPDc8.png"},
-	{"name": "鹿角理亞", "name_en": "Leah Kazuno","birth": "1212", "type": "C", "group": "aqours", "image": "https://i.idol.st/u/idol/43Kazuno-Sarah-J0mfHD.png"},
-	{"name": "鹿角聖良", "name_en": "Sarah Kazuno","birth": "0504", "type": "C", "group": "aqours", "image": "https://i.idol.st/u/idol/43Kazuno-Sarah-J0mfHD.png"},
+	{"name": "鹿角理亞", "name_en": "Leah Kazuno","birth": "1212", "type": "C", "group": "saint-snow", "image": "https://i.idol.st/u/idol/43Kazuno-Sarah-J0mfHD.png"},
+	{"name": "鹿角聖良", "name_en": "Sarah Kazuno","birth": "0504", "type": "C", "group": "saint-snow", "image": "https://i.idol.st/u/idol/43Kazuno-Sarah-J0mfHD.png"},
 
 	{"name": "伊波杏樹", "name_en": "Anju Inami","birth": "0207", "type": "V", "character": "高海千歌", "group": "aqours", "tips": "Aqours 高海千歌 役", "image": "https://i.idol.st/u/voiceactress/tthumb/14Inami-Anju-jtVY28.png"},
 	{"name": "逢田梨香子", "name_en": "Rikako Aida","birth": "0808", "type": "V", "character": "桜内梨子", "group": "aqours", "tips": "Aqours 桜内梨子 役", "image": "https://i.idol.st/u/voiceactress/tthumb/12Aida-Rikako-XeVVRU.png"},
@@ -109,16 +109,16 @@
 
 
 
-    {"name": "椿ルリカ", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/190Tsubaki-Rurika-amEG6Z.png"},
-    {"name": "皇ユズハ", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/191Sumeragi-Yuzuha-ltctRd.png"},
-    {"name": "北条ユキノ", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/193Hojo-Yukino-xwlvUa.png"},
-    {"name": "天草ヒカル", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/192Amakusa-Hikaru-qa5MDe.png"},
-    {"name": "三笠マーヤ", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/194Mikasa-Maya-5rkciw.png"},
-    {"name": "滝沢アンズ", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/195Takizawa-Anzu-MTHK7H.png"},
-    {"name": "若槻ミスズ", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/196Wakatsuki-Misuzu-FUfIz2.png"},
-    {"name": "来栖トア", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/197Kurusu-Toa-CHkzgl.png"},
-    {"name": "鈴賀レナ", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/199Suzuka-Rena-qLoloz.png"},
-    {"name": "晴風サヤカ", "name_en": "","birth": "0000", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/198Harukaze-Sayaka-4qcldd.png"},
+    {"name": "椿ルリカ", "name_en": "Rurika Tsubaki","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/190Tsubaki-Rurika-amEG6Z.png"},
+    {"name": "皇ユズハ", "name_en": "Yuzuha Sumeragi","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/191Sumeragi-Yuzuha-ltctRd.png"},
+    {"name": "北条ユキノ", "name_en": "Yukino Hojo","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/193Hojo-Yukino-xwlvUa.png"},
+    {"name": "天草ヒカル", "name_en": "Hikaru Amakusa","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/192Amakusa-Hikaru-qa5MDe.png"},
+    {"name": "三笠マーヤ", "name_en": "Maya Mikasa","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/194Mikasa-Maya-5rkciw.png"},
+    {"name": "滝沢アンズ", "name_en": "Anzu Takizawa","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/195Takizawa-Anzu-MTHK7H.png"},
+    {"name": "若槻ミスズ", "name_en": "Misuzu Wakatsuki","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/196Wakatsuki-Misuzu-FUfIz2.png"},
+    {"name": "来栖トア", "name_en": "Toa Kurusu","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/197Kurusu-Toa-CHkzgl.png"},
+    {"name": "鈴賀レナ", "name_en": "Rena Suzuka","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/199Suzuka-Rena-qLoloz.png"},
+    {"name": "晴風サヤカ", "name_en": "Sayaka Harukaze","birth": "9999", "type": "C", "group": "musical", "image": "https://i.idol.st/u/idol/198Harukaze-Sayaka-4qcldd.png"},
 
 	{"name": "堀内まり菜", "name_en": "Marina Horiuchi","birth": "0429", "type": "V", "character": "椿ルリカ", "group": "musical", "tips": "ミュージカル 椿ルリカ 役(2023-2025)", "image": "https://i.idol.st/u/voiceactress/tthumb/108Horiuchi-Marina-FUt5dF.jpg"},
 	{"name": "渡邉美穂", "name_en": "Miho Watanabe","birth":"0224", "type": "V", "character": "椿ルリカ", "group": "musical", "tips": "ミュージカル 椿ルリカ 役(TVドラマ)", "image": "https://www.mbs.jp/sim_LoveLive/images/photo/watanabe.webp?new"},
