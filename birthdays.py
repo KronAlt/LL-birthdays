@@ -37,6 +37,7 @@ def process_birthday_data(data):
             
         birthdays_by_month[month].append({
             "name": person["name_en"],
+            "name_hover": person["name"],
             "birth": birth_date,
             "image": person["image"],
             "day": day,
@@ -144,13 +145,11 @@ def generate_html(birthdays_by_month, character_images):
         "musical-drama": "https://i.imgur.com/EZ9ncn6.png",
     }
 
-    months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
-    months_name = {"01":"January", "02":"February", "03":"March", "04":"April", "05":"May", "06":"June", "07":"July", "08":"August", "09":"September", "10":"October", "11":"November", "12":"December"}
+    months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "99"]
+    months_name = {"01":"January", "02":"February", "03":"March", "04":"April", "05":"May", "06":"June", "07":"July", "08":"August", "09":"September", "10":"October", "11":"November", "12":"December", "99": "Unknown birthday"}
 
     #Add the birthdays for each month
     for month in months:
-        if month == "00":
-            continue #If no birthday ("0000"), skip
         if month in birthdays_by_month:
             html += f'<div class="month"><h2>{months_name[month]}</h2><div class="birthday-list">'
 
@@ -166,7 +165,7 @@ def generate_html(birthdays_by_month, character_images):
                 html += f'''
                     <div class="birthday-item">
                         <img src="{person['image']}" alt="{person['name']}">
-                        <p>{person['name']}</p>
+                        <p title="{person['name_hover']}">{person['name']}</p>
                 '''
                 
                 #Add small circle image for seiyuus
@@ -177,7 +176,10 @@ def generate_html(birthdays_by_month, character_images):
                 #Add the group logo if available
                 if group_logo:
                     html += f'<img src="{group_logo}" alt="{person["group"]} logo" class="group-logo">'
-                html += f'{person["birth"][:2]}-{person["birth"][2:]}</div></div>'
+                if person["birth"]=="9999": #unknown
+                	html += f'</div></div>'
+                else:
+                	html += f'{person["birth"][:2]}-{person["birth"][2:]}</div></div>'
                 
                 
 
