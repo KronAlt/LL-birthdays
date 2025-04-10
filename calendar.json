@@ -158,8 +158,8 @@
 	{"name": "百生吟子", "name_en": "Ginko Momose","birth": "1020", "type": "C", "group": "hasu", "image": "https://i.idol.st/u/idol/224Ginko-Momose-0YjRmV.png"},
 	{"name": "徒町小鈴", "name_en": "Kosuzu Kachimachi","birth": "0228", "type": "C", "group": "hasu", "image": "https://i.idol.st/u/idol/225Kosuzu-Kachimachi-NQRyno.png"},
 	{"name": "安養寺姫芽", "name_en": "Hime Anyoji","birth": "0924", "type": "C", "group": "hasu", "image": "https://i.idol.st/u/idol/226Hime-Anyoji-r3RVtI.png"},
-	{"name": "桂城泉", "name_en": "Izumi Katsuragi","birth": "0000", "type": "C", "group": "hasu", "image": "https://i.imgur.com/aMLbIPx.jpeg"},
-	{"name": "セラス・柳田・リリエンフェルト", "name_en": "Ceras Yanagida Lilienfeld","birth": "0000", "type": "C", "group": "hasu", "image": "https://i.imgur.com/A7WToSt.jpeg"},
+	{"name": "桂城泉", "name_en": "Izumi Katsuragi","birth": "1201", "type": "C", "group": "hasu", "image": "https://i.imgur.com/9LMkfcv.png"},
+	{"name": "セラス・柳田・リリエンフェルト", "name_en": "Ceras Yanagida Lilienfeld","birth": "0626", "type": "C", "group": "hasu", "image": "https://i.imgur.com/as3GpTa.png"},
 
 	{"name": "楡井希美", "name_en": "Nozomi Nirei","birth": "0521", "type": "V", "character": "日野下花帆", "group": "hasu", "tips": "蓮ノ空 日野下花帆 役", "image": "https://i.idol.st/u/voiceactress/tthumb/122Nirei-Nozomi-AeCjl3.jpg"},
 	{"name": "花宮初奈", "name_en": "Niina Hanamiya","birth": "1024", "type": "V", "character": "乙宗梢", "group": "hasu", "tips": "蓮ノ空 乙宗梢 役", "image": "https://i.idol.st/u/voiceactress/tthumb/123Hanamiya-Nina-JCu4Bh.jpg"},
@@ -170,8 +170,9 @@
 	{"name": "櫻井陽菜", "name_en": "Hina Sakurai","birth": "0917", "type": "V", "character": "百生吟子", "group": "hasu", "tips": "蓮ノ空 百生吟子 役", "image": "https://i.idol.st/u/voiceactress/tthumb/132Sakurai-Hina-N3hIfx.jpg"},
 	{"name": "葉山風花", "name_en": "Fuka Hayama","birth": "0128", "type": "V", "character": "徒町小鈴", "group": "hasu", "tips": "蓮ノ空 徒町小鈴 役", "image": "https://i.idol.st/u/voiceactress/h5nGA2Hayama-Fuka-7a5ytd.jpg"},
 	{"name": "来栖りん", "name_en": "Rin Kurusu","birth": "1108", "type": "V", "character": "安養寺姫芽", "group": "hasu", "tips": "蓮ノ空 安養寺姫芽 役", "image": "https://i.idol.st/u/voiceactress/tthumb/131Kurusu-Rin-lTg46J.jpg"},
-	{"name": "進藤あまね", "name_en": "Amane Shindou","birth": "0420", "type": "V", "character": "桂城泉", "group": "hasu", "tips": "Edel Note 桂城泉 役", "rival": true, "image": "https://i.idol.st/u/voiceactress/139Shindou-Amane-8hl9gT.jpg"},
-	{"name": "三宅美羽", "name_en": "Miu Miyake","birth": "1214", "type": "V", "character": "セラス・柳田・リリエンフェルト", "group": "hasu", "tips": "Edel Note セラス・柳田・リリエンフェルト 役", "rival": true, "image": "https://i.idol.st/u/voiceactress/140Miyake-Miu-B1VSlY.jpg"},
+	{"name": "進藤あまね", "name_en": "Amane Shindou","birth": "0420", "type": "V", "character": "桂城泉", "group": "hasu", "tips": "Edel Note 桂城泉 役",  "image": "https://i.imgur.com/Ztz9nSC.jpeg"},
+	{"name": "三宅美羽", "name_en": "Miu Miyake","birth": "1214", "type": "V", "character": "セラス・柳田・リリエンフェルト", "group": "hasu", "tips": "Edel Note セラス・柳田・リリエンフェルト 役",  "image": "https://i.imgur.com/qc1pOvl.jpeg"},
+
 
 	{"name": "一之瀬マリカ", "name_en": "","birth": "0420", "type": "C", "group": "llsif", "image": "https://lovelive-sif2.bushimo.jp/wordpress/wp-content/uploads/2022/12/15202120/img_kotori_ap8wAYYJHHrQ.png"},
 	{"name": "永山みなみ", "name_en": "","birth": "0830", "type": "C", "group": "llsif", "image": "https://lovelive-sif2.bushimo.jp/wordpress/wp-content/uploads/2022/12/15202120/img_kotori_ap8wAYYJHHrQ.png"},
