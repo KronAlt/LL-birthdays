@@ -1,0 +1,791 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Birthday List</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            h2 {
+                color: #4CAF50;
+            }
+            .month {
+                margin-top: 30px;
+            }
+            .birthday-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .birthday-item {
+                border: 1px solid #ccc;
+                padding: 5px;
+                text-align: center;
+                width: 150px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .birthday-item img {
+                width: 100px;
+                height: 130px;
+                object-fit: cover;
+            }
+
+            .birthday-item p {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 14px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .birthday-item .group-logo-container {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start; /* Align text and logo to the left */
+                gap: 5px;
+                font-size: 14px;
+                width: 100%;
+                padding-left: 10px; /* Small left padding for better spacing */
+            }
+
+            .birthday-item .group-logo {
+                width: 45px;
+                height: 20px;
+            }
+            .birthday-item .small-circle {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Character Birthdays by Month</h1>
+    <div class="month"><h2>January</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/6Kurosawa-Dia-gjXWOR.png" alt="Dia Kurosawa">
+                        <p title="黒澤ダイヤ">Dia Kurosawa</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">01-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_8.png" alt="Aurora Konohana">
+                        <p title="此花輝夜">Aurora Konohana</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">01-03</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/O0HFBb9.jpeg" alt="Mai Haruna">
+                        <p title="春名真依">Mai Haruna</p>
+                <img src="https://i.idol.st/u/idol/192Amakusa-Hikaru-qa5MDe.png" alt="天草ヒカル" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">01-05</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/3.png" alt="Seri Miyano">
+                        <p title="宮野芹">Seri Miyano</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_3.png" alt="五桐玲" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">01-05</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/45Liyuu-bp6VL0.jpeg" alt="Liyuu">
+                        <p title="Liyuu">Liyuu</p>
+                <img src="https://i.idol.st/u/idol/119Tang-Keke-DsQVZW.png" alt="唐可可" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">01-09</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/204Sayaka-Murano-3nc2Ol.png  " alt="Sayaka Murano">
+                        <p title="村野さやか">Sayaka Murano</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">01-13</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/111An-Julia-eVz9XZ.jpg" alt="Julia An">
+                        <p title="杏ジュリア">Julia An</p>
+                <img src="https://i.idol.st/u/idol/193Hojo-Yukino-xwlvUa.png" alt="北条ユキノ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">01-15</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/3Koizumi-Hanayo-kdVFUI.png" alt="Hanayo Koizumi">
+                        <p title="小泉花陽">Hanayo Koizumi</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">01-17</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/8.png" alt="Akane Amasawa">
+                        <p title="天沢朱音">Akane Amasawa</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_8.png" alt="此花輝夜" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">01-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/178Margarete-Wien-9s7aq5.png" alt="Wien Margarete">
+                        <p title="ウィーン・マルガレーテ">Wien Margarete</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">01-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/115Hoshimori-Sana-UretQN.jpg" alt="Sana Hoshimori">
+                        <p title="星守紗凪">Sana Hoshimori</p>
+                <img src="https://i.idol.st/u/idol/197Kurusu-Toa-CHkzgl.png" alt="来栖トア" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">01-21</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/33Matsunaga-Maho-1c5lFk.jpg" alt="Maho Matsunaga">
+                        <p title="松永真穂">Maho Matsunaga</p>
+                <img src="https://i.idol.st/u/idol/99Toudou-Erena-l39Dhy.png" alt="統堂英玲奈" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/A-RISE.png?&0" alt="a-rise logo" class="group-logo">01-23</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/67Nakasu-Kasumi-M5ZCuB.png" alt="Kasumi Nakasu">
+                        <p title="中須かすみ">Kasumi Nakasu</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">01-23</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/9.png" alt="Honoka Kotomori">
+                        <p title="小戸森穂花">Honoka Kotomori</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_9.png" alt="山田真緑" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">01-23</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/135Suzuki-Mayuri-cBk5CK.jpg" alt="Mayuri Suzuki">
+                        <p title="鈴木まゆり">Mayuri Suzuki</p>
+                <img src="https://i.idol.st/u/idol/191Sumeragi-Yuzuha-ltctRd.png" alt="皇ユズハ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">01-25</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/EjT8naNonaka-Kokona-fZRE5G.jpg" alt="Kokona Nonaka">
+                        <p title="野中ここな">Kokona Nonaka</p>
+                <img src="https://i.idol.st/u/idol/204Sayaka-Murano-3nc2Ol.png  " alt="村野さやか" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">01-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/h5nGA2Hayama-Fuka-7a5ytd.jpg" alt="Fuka Hayama">
+                        <p title="葉山風花">Fuka Hayama</p>
+                <img src="https://i.idol.st/u/idol/225Kosuzu-Kachimachi-NQRyno.png" alt="徒町小鈴" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">01-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/29Kubota-Miyu-mUOcIg.jpg" alt="Miyu Kubota">
+                        <p title="久保田未夢">Miyu Kubota</p>
+                <img src="https://i.idol.st/u/idol/24Asaka-Karin-fd7iBo.png" alt="朝香果林" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">01-31</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/117Aoyama-Ruri-9dx0m7.jpg" alt="Ruri Aoyama">
+                        <p title="青山瑠里">Ruri Aoyama</p>
+                <img src="https://i.idol.st/u/idol/198Harukaze-Sayaka-4qcldd.png" alt="晴風サヤカ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">01-31</div></div></div><div class="month"><h2>February</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/15Kusuda-Aina-CGVPKM.jpg" alt="Aina Kusuda">
+                        <p title="楠田亜衣奈">Aina Kusuda</p>
+                <img src="https://i.idol.st/u/idol/15Toujou-Nozomi-ToXNZh.png" alt="東條希" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">02-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/6Komiya-Arisa-UciyLn.png" alt="Arisa Komiya">
+                        <p title="小宮有紗">Arisa Komiya</p>
+                <img src="https://i.idol.st/u/idol/6Kurosawa-Dia-gjXWOR.png" alt="黒澤ダイヤ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">02-05</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/28Emma-Verde-cn5mja.png" alt="Emma Verde">
+                        <p title="エマ・ヴェルデ">Emma Verde</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">02-05</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/14Inami-Anju-jtVY28.png" alt="Anju Inami">
+                        <p title="伊波杏樹">Anju Inami</p>
+                <img src="https://i.idol.st/u/idol/14Takami-Chika-RUJSlZ.png" alt="高海千歌" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">02-07</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/8Matsuura-Kanan-qlLtYT.png" alt="Kanan Matsuura">
+                        <p title="松浦果南">Kanan Matsuura</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">02-10</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/20Tano-Asami-dk7x06.png" alt="Asami Tano">
+                        <p title="田野アサミ">Asami Tano</p>
+                <img src="https://i.idol.st/u/idol/43Kazuno-Sarah-J0mfHD.png" alt="鹿角理亞" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Saint-Snow.png?&0" alt="saint-snow logo" class="group-logo">02-12</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_2.png" alt="Mai Azabu">
+                        <p title="麻布麻衣">Mai Azabu</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">02-13</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/124Lanzhu-ttDPY2.png" alt="Lanzhu Zhong">
+                        <p title="鐘嵐珠">Lanzhu Zhong</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">02-15</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/7Furihata-Ai-xUsJsh.jpeg" alt="Ai Furihata">
+                        <p title="降幡愛">Ai Furihata</p>
+                <img src="https://i.idol.st/u/idol/7Kurosawa-Ruby-UbPDc8.png" alt="黒澤ルビィ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">02-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/dEQRBEV.jpeg" alt="Miyu Kurogi">
+                        <p title="黒木美佑">Miyu Kurogi</p>
+                <img src="https://i.idol.st/u/idol/197Kurusu-Toa-CHkzgl.png" alt="来栖トア" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">02-22</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/99Emori-Aya-ZAU2jk.jpeg" alt="Aya Emori">
+                        <p title="絵森彩">Aya Emori</p>
+                <img src="https://i.idol.st/u/idol/175Onitsuka-Natsumi-pUUL81.png" alt="鬼塚夏実" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">02-23</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.mbs.jp/sim_LoveLive/images/photo/watanabe.webp?new" alt="Miho Watanabe">
+                        <p title="渡邉美穂">Miho Watanabe</p>
+                <img src="https://i.idol.st/u/idol/190Tsubaki-Rurika-amEG6Z.png" alt="椿ルリカ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">02-24</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/120Arashi-Chisato-NGhy5X.png" alt="Chisato Arashi">
+                        <p title="嵐千砂都">Chisato Arashi</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">02-25</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/35Koizumi-Moeka-VR0803.jpg" alt="Moeka Koizumi">
+                        <p title="小泉萌香">Moeka Koizumi</p>
+                <img src="https://i.idol.st/u/idol/113Mifune-Shioriko-o5YINu.png" alt="三船栞子" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">02-27</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/225Kosuzu-Kachimachi-NQRyno.png" alt="Kosuzu Kachimachi">
+                        <p title="徒町小鈴">Kosuzu Kachimachi</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">02-28</div></div></div><div class="month"><h2>March</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/102Uehara-Ayumu-TgB2p1.png" alt="Ayumu Uehara">
+                        <p title="上原歩夢">Ayumu Uehara</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">03-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_5.png" alt="Miracle Kanazawa">
+                        <p title="金澤奇跡">Miracle Kanazawa</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">03-02</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/5Kunikida-Hanamaru-nqbGF1.png" alt="Hanamaru Kunikida">
+                        <p title="国木田花丸">Hanamaru Kunikida</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">03-04</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/112Koyama-Rina-1v5MGX.jpg" alt="Rina Koyama">
+                        <p title="小山璃奈">Rina Koyama</p>
+                <img src="https://i.idol.st/u/idol/192Amakusa-Hikaru-qa5MDe.png" alt="天草ヒカル" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">03-04</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/39Yano-Hinaki-9o1oj1.jpg" alt="Hinaki Yano">
+                        <p title="矢野妃菜喜">Hinaki Yano</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">03-05</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/47Misaki-Nako-BAYs3U.jpeg" alt="Nako Misaki">
+                        <p title="岬なこ">Nako Misaki</p>
+                <img src="https://i.idol.st/u/idol/120Arashi-Chisato-NGhy5X.png" alt="嵐千砂都" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">03-08</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/PKTtqV9.jpeg" alt="Akari Yura">
+                        <p title="由良朱合">Akari Yura</p>
+                <img src="https://i.idol.st/u/idol/194Mikasa-Maya-5rkciw.png" alt="三笠マーヤ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">03-12</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/13Sonoda-Umi-RVB62t.png" alt="Umi Sonoda">
+                        <p title="園田海未">Umi Sonoda</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">03-15</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/49吉武-千颯-hvERMF.jpg" alt="Chihaya Yoshitake">
+                        <p title="吉武千颯">Chihaya Yoshitake</p>
+                <img src="https://i.idol.st/u/idol/134Hijirisawa-Yuna-B8Wlcu.png" alt="聖澤悠奈" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Sunny-Passion.png?&0" alt="sunny-passion logo" class="group-logo">03-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/4.png" alt="Kokoro Fujino">
+                        <p title="藤野こころ">Kokoro Fujino</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_4.png" alt="駒形花火" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">03-31</div></div></div><div class="month"><h2>April</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/TiO1TwU.jpeg" alt="Hana Minamino">
+                        <p title="南野巴那">Hana Minamino</p>
+                <img src="https://i.idol.st/u/idol/196Wakatsuki-Misuzu-FUfIz2.png" alt="若槻ミスズ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">04-02</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/70Osaka-Shizuku-4TmRNm.png" alt="Shizuku Osaka">
+                        <p title="桜坂しずく">Shizuku Osaka</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">04-03</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/130Sakakura-Sakura-JBMhLl.jpeg" alt="Sakura Sakakura">
+                        <p title="坂倉花">Sakura Sakakura</p>
+                <img src="https://i.idol.st/u/idol/209Tomari-Onitsuka-oZzgZo.png" alt="鬼塚冬毬" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">04-03</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_6.png" alt="Noriko Chofu">
+                        <p title="調布のりこ">Noriko Chofu</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">04-04</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/172Sakurakoji-Kinako-dQVwkG.png" alt="Kinako Sakurakoji">
+                        <p title="桜小路きな子">Kinako Sakurakoji</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">04-10</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/98Ookuma-Wakana-MnavLF.jpeg" alt="Wakana Ookuma">
+                        <p title="大熊和奏">Wakana Ookuma</p>
+                <img src="https://i.idol.st/u/idol/174Wakana-Shiki-fxvbKO.png" alt="若菜四季" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">04-13</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/17Watanabe-You-ohUDHk.png" alt="You Watanabe">
+                        <p title="渡辺曜">You Watanabe</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">04-17</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/24Sagara-Mayu-ZKY7J1.png" alt="Mayu Sagara">
+                        <p title="相良茉優">Mayu Sagara</p>
+                <img src="https://i.idol.st/u/idol/67Nakasu-Kasumi-M5ZCuB.png" alt="中須かすみ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">04-17</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/10Nishikino-Maki-UFQB4E.png" alt="Maki Nishikino">
+                        <p title="西木野真姫">Maki Nishikino</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">04-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/Ztz9nSC.jpeg" alt="Amane Shindou">
+                        <p title="進藤あまね">Amane Shindou</p>
+                <img src="https://i.imgur.com/9LMkfcv.png" alt="桂城泉" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">04-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/26Maeda-Kaori-fdwpJs.jpeg" alt="Kaori Maeda">
+                        <p title="前田佳織里">Kaori Maeda</p>
+                <img src="https://i.idol.st/u/idol/70Osaka-Shizuku-4TmRNm.png" alt="桜坂しずく" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">04-25</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/114Mizuki-Nishiba-xOAMCW.jpg" alt="Mizuki Saiba">
+                        <p title="西葉瑞希">Mizuki Saiba</p>
+                <img src="https://i.idol.st/u/idol/196Wakatsuki-Misuzu-FUfIz2.png" alt="若槻ミスズ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">04-27</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/34Oohashi-Ayuru-5tijZR.jpg" alt="Ayuru Oohashi">
+                        <p title="大橋歩夕">Ayuru Oohashi</p>
+                <img src="https://i.idol.st/u/idol/111Yuki-Anju-N6q54P.png" alt="優木あんじゅ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/A-RISE.png?&0" alt="a-rise logo" class="group-logo">04-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/108Horiuchi-Marina-FUt5dF.jpg" alt="Marina Horiuchi">
+                        <p title="堀内まり菜">Marina Horiuchi</p>
+                <img src="https://i.idol.st/u/idol/190Tsubaki-Rurika-amEG6Z.png" alt="椿ルリカ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">04-29</div></div></div><div class="month"><h2>May</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/118Shibuya-Kanon-v7t9EL.png" alt="Kanon Shibuya">
+                        <p title="澁谷かのん">Kanon Shibuya</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">05-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/10Pile-1xWTkr.jpg" alt="Pile">
+                        <p title="Pile">Pile</p>
+                <img src="https://i.idol.st/u/idol/10Nishikino-Maki-UFQB4E.png" alt="西木野真姫" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">05-02</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/21Oonishi-Aguri-FUXfkr.jpg" alt="Aguri Oonishi">
+                        <p title="大西亜玖璃">Aguri Oonishi</p>
+                <img src="https://i.idol.st/u/idol/102Uehara-Ayumu-TgB2p1.png" alt="上原歩夢" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">05-02</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/43Kazuno-Sarah-J0mfHD.png" alt="Sarah Kazuno">
+                        <p title="鹿角聖良">Sarah Kazuno</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Saint-Snow.png?&0" alt="saint-snow logo" class="group-logo">05-04</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_9.png" alt="Midori Yamada">
+                        <p title="山田真緑">Midori Yamada</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">05-07</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/126Hayashi-Coco-h2nvcI.jpeg" alt="Coco Hayashi">
+                        <p title="林鼓子">Coco Hayashi</p>
+                <img src="https://i.idol.st/u/idol/110Yuki-Setsuna-44Ojdt.png" alt="優木せつ菜" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">05-15</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/44Aoyama-Nagisa-zHa4J6.jpeg" alt="Nagisa Aoyama">
+                        <p title="青山なぎさ">Nagisa Aoyama</p>
+                <img src="https://i.idol.st/u/idol/122Hazuki-Ren-vhPCUT.png" alt="葉月恋" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">05-16</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/3Kubo-Yurika-h31D08.jpg" alt="Yurika Kubo">
+                        <p title="久保ユリカ">Yurika Kubo</p>
+                <img src="https://i.idol.st/u/idol/3Koizumi-Hanayo-kdVFUI.png" alt="小泉花陽" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">05-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/oUAD4ie.jpeg" alt="Nanami Asai">
+                        <p title="浅井七海">Nanami Asai</p>
+                <img src="https://i.idol.st/u/idol/191Sumeragi-Yuzuha-ltctRd.png" alt="皇ユズハ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">05-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/lyiY8ud.jpeg" alt="Ruka Asakura">
+                        <p title="浅蔵るか">Ruka Asakura</p>
+                <img src="https://i.idol.st/u/idol/193Hojo-Yukino-xwlvUa.png" alt="北条ユキノ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">05-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/122Nirei-Nozomi-AeCjl3.jpg" alt="Nozomi Nirei">
+                        <p title="楡井希美">Nozomi Nirei</p>
+                <img src="https://i.idol.st/u/idol/203Kaho-Hinoshita-obf8Nh.png" alt="日野下花帆" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">05-21</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/203Kaho-Hinoshita-obf8Nh.png" alt="Kaho Hinoshita">
+                        <p title="日野下花帆">Kaho Hinoshita</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">05-22</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/40Uchida-Shu-Y86Z8y.jpg" alt="Shu Uchida">
+                        <p title="内田秀">Shu Uchida</p>
+                <img src="https://i.idol.st/u/idol/123Mia-Taylor-88B8V6.png" alt="ミア・テイラー" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">05-24</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/RAedoqk.jpeg" alt="Yuna Nakamura">
+                        <p title="仲村悠菜">Yuna Nakamura</p>
+                <img src="https://i.idol.st/u/idol/197Kurusu-Toa-CHkzgl.png" alt="来栖トア" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">05-29</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/62Miyashita-Ai-3rwYaJ.png" alt="Ai Miyashita">
+                        <p title="宮下愛">Ai Miyashita</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">05-30</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/5.png" alt="Aiha Sakano">
+                        <p title="坂野愛羽">Aiha Sakano</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_5.png" alt="金澤奇跡" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">05-31</div></div></div><div class="month"><h2>June</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/15Toujou-Nozomi-ToXNZh.png" alt="Nozomi Toujo">
+                        <p title="東條希">Nozomi Toujo</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">06-09</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/48Yuna-Yuuki-gU1p67.jpg" alt="Yuna Yuuki">
+                        <p title="結木ゆな">Yuna Yuuki</p>
+                <img src="https://i.idol.st/u/idol/133Hiiragi-Mao-yuL7qs.png" alt="柊摩央" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Sunny-Passion.png?&0" alt="sunny-passion logo" class="group-logo">06-09</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_4.png" alt="Hanabi Komagata">
+                        <p title="駒形花火">Hanabi Komagata</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">06-11</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/11Ohara-Mari-npxzmE.png" alt="Mari Ohara">
+                        <p title="小原鞠莉">Mari Ohara</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">06-13</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/205Kozue-Otomune-aCtlXr.png" alt="Kozue Otomune">
+                        <p title="乙宗梢">Kozue Otomune</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">06-15</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/174Wakana-Shiki-fxvbKO.png" alt="Shiki Wakana">
+                        <p title="若菜四季">Shiki Wakana</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">06-17</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/I7rkL37.jpeg" alt="Rina">
+                        <p title="里菜">Rina</p>
+                <img src="https://i.idol.st/u/idol/199Suzuka-Rena-qLoloz.png" alt="鈴賀レナ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">06-18</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/as3GpTa.png" alt="Ceras Yanagida Lilienfeld">
+                        <p title="セラス・柳田・リリエンフェルト">Ceras Yanagida Lilienfeld</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">06-26</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/obO4FGC.jpeg" alt="Ayaka Yasumoto">
+                        <p title="安本彩花">Ayaka Yasumoto</p>
+                <img src="https://i.idol.st/u/idol/196Wakatsuki-Misuzu-FUfIz2.png" alt="若槻ミスズ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">06-27</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/13Mimori-Suzuko-yzSVkK.jpg" alt="Suzuko Mimori">
+                        <p title="三森すずこ">Suzuko Mimori</p>
+                <img src="https://i.idol.st/u/idol/13Sonoda-Umi-RVB62t.png" alt="園田海未" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">06-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/24Asaka-Karin-fd7iBo.png" alt="Karin Asaka">
+                        <p title="朝香果林">Karin Asaka</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">06-29</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/fVIya70.jpeg" alt="Hirari Nishida">
+                        <p title="西田ひらり">Hirari Nishida</p>
+                <img src="https://i.idol.st/u/idol/198Harukaze-Sayaka-4qcldd.png" alt="晴風サヤカ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">06-30</div></div></div><div class="month"><h2>July</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/46Naomi-Payton-jLksIw.jpeg" alt="Naomi Payton">
+                        <p title="ペイトン尚未">Naomi Payton</p>
+                <img src="https://i.idol.st/u/idol/121Heanna-Sumire-pZiy0V.png" alt="平安名すみれ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">07-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_3.png" alt="Akira Goto">
+                        <p title="五桐玲">Akira Goto</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">07-09</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/1Nanjou-Yoshino-Y6jvrK.jpg" alt="Yoshino Nanjou">
+                        <p title="南條愛乃">Yoshino Nanjou</p>
+                <img src="https://i.idol.st/u/idol/1Ayase-Eli-MqG2az.png" alt="絢瀬絵里" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">07-12</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/16Tsushima-Yoshiko-VytOHY.png" alt="Tsushima Yoshiko">
+                        <p title="津島善子">Tsushima Yoshiko</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">07-13</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/119Tang-Keke-DsQVZW.png" alt="Keke Tang">
+                        <p title="唐可可">Keke Tang</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">07-17</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/XfHQ9zO.jpeg" alt="Nanaka Tomita">
+                        <p title="冨田菜々風">Nanaka Tomita</p>
+                <img src="https://i.idol.st/u/idol/195Takizawa-Anzu-MTHK7H.png" alt="滝沢アンズ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">07-17</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/97Yabushima-Akane-QA6ijb.jpeg" alt="Akane Yabushima">
+                        <p title="薮島朱音">Akane Yabushima</p>
+                <img src="https://i.idol.st/u/idol/173Yoneme-Mei-tsct9m.png" alt="米女メイ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">07-18</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/116Mita-Ibuki-cCYhBm.jpg" alt="Ibuki Mita">
+                        <p title="三田美吹">Ibuki Mita</p>
+                <img src="https://i.idol.st/u/idol/199Suzuka-Rena-qLoloz.png" alt="鈴賀レナ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">07-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/18Yazawa-Nico-agidhY.png" alt="Nico Yazawa">
+                        <p title="矢澤にこ">Nico Yazawa</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">07-22</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/138Matsuzawa-Kanon-WZg8x6.jpg" alt="Kanon Matsuzawa">
+                        <p title="松澤可苑">Kanon Matsuzawa</p>
+                <img src="https://i.idol.st/u/idol/194Mikasa-Maya-5rkciw.png" alt="三笠マーヤ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">07-22</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/9Uchida-Aya-Qi2akv.jpg" alt="Aya Uchida">
+                        <p title="内田彩">Aya Uchida</p>
+                <img src="https://i.idol.st/u/idol/9Minami-Kotori-06DzDA.png" alt="南ことり" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">07-23</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/11Suzuki-Aina-HlYYxp.png" alt="Aina Suzuki">
+                        <p title="鈴木愛奈">Aina Suzuki</p>
+                <img src="https://i.idol.st/u/idol/11Ohara-Mari-npxzmE.png" alt="小原鞠莉" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">07-23</div></div></div><div class="month"><h2>August</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/14Takami-Chika-RUJSlZ.png" alt="Chika Takami">
+                        <p title="高海千歌">Chika Takami</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">08-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/7bz5aUF.jpeg" alt="Yuuka Kato">
+                        <p title="加藤夕夏">Yuuka Kato</p>
+                <img src="https://i.idol.st/u/idol/199Suzuka-Rena-qLoloz.png" alt="鈴賀レナ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">08-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/4Kousaka-Honoka-m1dEvp.png" alt="Honoka Kousaka">
+                        <p title="高坂穂乃果">Honoka Kousaka</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">08-03</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/113Sato-Minami-endaXw.jpg" alt="Minami Sato">
+                        <p title="佐藤美波">Minami Sato</p>
+                <img src="https://i.idol.st/u/idol/194Mikasa-Maya-5rkciw.png" alt="三笠マーヤ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">08-03</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/41Homoto-Akina-cgyXOq.jpg" alt="Akina Homoto">
+                        <p title="法元明菜">Akina Homoto</p>
+                <img src="https://i.idol.st/u/idol/124Lanzhu-ttDPY2.png" alt="鐘嵐珠" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">08-05</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/175Onitsuka-Natsumi-pUUL81.png" alt="Natsumi Onitsuka">
+                        <p title="鬼塚夏実">Natsumi Onitsuka</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">08-07</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/12Aida-Rikako-XeVVRU.png" alt="Rikako Aida">
+                        <p title="逢田梨香子">Rikako Aida</p>
+                <img src="https://i.idol.st/u/idol/12Sakurauchi-Riko-xHBC2K.png" alt="桜内梨子" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">08-08</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/110Yuki-Setsuna-44Ojdt.png" alt="Setsuna Yuki">
+                        <p title="優木せつ菜">Setsuna Yuki</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">08-08</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/134Hijirisawa-Yuna-B8Wlcu.png" alt="Yuuna Hijirisawa">
+                        <p title="聖澤悠奈">Yuuna Hijirisawa</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Sunny-Passion.png?&0" alt="sunny-passion logo" class="group-logo">08-11</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/17Saitou-Shuka-jao83a.png" alt="Shuka Saitou">
+                        <p title="斉藤朱夏">Shuka Saitou</p>
+                <img src="https://i.idol.st/u/idol/17Watanabe-You-ohUDHk.png" alt="渡辺曜" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">08-16</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_1.png" alt="Polka Takahashi">
+                        <p title="高橋ポルカ">Polka Takahashi</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">08-18</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/124Tsukine-Kona-qT7nr4.jpg" alt="Kona Tsukine">
+                        <p title="月音こな">Kona Tsukine</p>
+                <img src="https://i.idol.st/u/idol/208Megumi-Fujishima-7wXwZW.png" alt="藤島慈" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">08-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/121Sasaki-Kotoko-qhottJ.jpg" alt="Kotoko Sasaki">
+                        <p title="佐々木琴子">Kotoko Sasaki</p>
+                <img src="https://i.idol.st/u/idol/206Tsuzuri-Yugiri-jGUNrA.png" alt="夕霧綴理" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">08-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/207Rurino-Osawa-dh0WWJ.png" alt="Rurino Osawa">
+                        <p title="大沢瑠璃乃">Rurino Osawa</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">08-31</div></div></div><div class="month"><h2>September</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/22Murakami-Natsumi-SUyTPe.jpg" alt="Natsumi Murakami">
+                        <p title="村上奈津実">Natsumi Murakami</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">09-07</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/9Minami-Kotori-06DzDA.png" alt="Kotori Minami">
+                        <p title="南ことり">Kotori Minami</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">09-12</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/132Sakurai-Hina-N3hIfx.jpg" alt="Hina Sakurai">
+                        <p title="櫻井陽菜">Hina Sakurai</p>
+                <img src="https://i.idol.st/u/idol/224Ginko-Momose-0YjRmV.png" alt="百生吟子" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">09-17</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/12Sakurauchi-Riko-xHBC2K.png" alt="Riko Sakurauchi">
+                        <p title="桜内梨子">Riko Sakurauchi</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">09-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/6.png" alt="Ria Seko">
+                        <p title="瀬古梨愛">Ria Seko</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_6.png" alt="調布のりこ" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">09-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/27Sashide-Maria-pY8iBL.jpg" alt="Maria Sashide">
+                        <p title="指出毬亜">Maria Sashide</p>
+                <img src="https://i.idol.st/u/idol/28Emma-Verde-cn5mja.png" alt="エマ・ヴェルデ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">09-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/lrHnxWx.jpeg" alt="Mizuki Yamauchi">
+                        <p title="山内瑞葵">Mizuki Yamauchi</p>
+                <img src="https://i.idol.st/u/idol/192Amakusa-Hikaru-qa5MDe.png" alt="天草ヒカル" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">09-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/7Kurosawa-Ruby-UbPDc8.png" alt="Ruby Kurosawa">
+                        <p title="黒澤ルビィ">Ruby Kurosawa</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">09-21</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_7.png" alt="Yukuri Harumiya">
+                        <p title="春宮ゆくり">Yukuri Harumiya</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">09-22</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/226Hime-Anyoji-r3RVtI.png" alt="Hime Anyoji">
+                        <p title="安養寺姫芽">Hime Anyoji</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">09-24</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/5Takatsuki-Kanako-rmvIvy.png" alt="Kanako Takatsuki">
+                        <p title="高槻かなこ">Kanako Takatsuki</p>
+                <img src="https://i.idol.st/u/idol/5Kunikida-Hanamaru-nqbGF1.png" alt="国木田花丸" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">09-25</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/105Yuina-CsqPEF.jpeg" alt="Yuina">
+                        <p title="結那">Yuina</p>
+                <img src="https://i.idol.st/u/idol/178Margarete-Wien-9s7aq5.png" alt="ウィーン・マルガレーテ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">09-27</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/121Heanna-Sumire-pZiy0V.png" alt="Sumire Heanna">
+                        <p title="平安名すみれ">Sumire Heanna</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">09-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/109Sekine-Yuna-bAfDII.jpg" alt="Yuuna Sekine">
+                        <p title="関根優那">Yuuna Sekine</p>
+                <img src="https://i.idol.st/u/idol/195Takizawa-Anzu-MTHK7H.png" alt="滝沢アンズ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">09-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/43Date-Sayuri-z15DWY.jpeg" alt="Sayuri Date">
+                        <p title="伊達さゆり">Sayuri Date</p>
+                <img src="https://i.idol.st/u/idol/118Shibuya-Kanon-v7t9EL.png" alt="澁谷かのん" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">09-30</div></div></div><div class="month"><h2>October</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/2.png" alt="Rina Endo">
+                        <p title="遠藤璃菜">Rina Endo</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_2.png" alt="麻布麻衣" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">10-04</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/113Mifune-Shioriko-o5YINu.png" alt="Shioriko Mifune">
+                        <p title="三船栞子">Shioriko Mifune</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">10-05</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/25Tanaka-Chiemi-WOQRpn.jpg" alt="Chiemi Tanaka">
+                        <p title="田中ちえ美">Chiemi Tanaka</p>
+                <img src="https://i.idol.st/u/idol/97Tennoji-Rina-tZo8rZ.png" alt="天王寺璃奈" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">10-06</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/7.png" alt="Yuki Okumura">
+                        <p title="奥村優季">Yuki Okumura</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_7.png" alt="春宮ゆくり" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">10-13</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/28Kitou-Akari-AYBAGG.jpg" alt="Akari Kitou">
+                        <p title="鬼頭明里">Akari Kitou</p>
+                <img src="https://i.idol.st/u/idol/50Konoe-Kanata-xB16n7.png" alt="近江彼方" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">10-16</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/224Ginko-Momose-0YjRmV.png" alt="Ginko Momose">
+                        <p title="百生吟子">Ginko Momose</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">10-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/1Ayase-Eli-MqG2az.png" alt="Eli Ayase">
+                        <p title="絢瀬絵里">Eli Ayase</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">10-21</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/16Kobayashi-Aika-j02dWA.png" alt="Aika Kobayashi">
+                        <p title="小林愛香">Aika Kobayashi</p>
+                <img src="https://i.idol.st/u/idol/16Tsushima-Yoshiko-VytOHY.png" alt="津島善子" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">10-23</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/30Sakuragawa-Megu-9Lnaal.png" alt="Megu Sakuragawa">
+                        <p title="櫻川めぐ">Megu Sakuragawa</p>
+                <img src="https://i.idol.st/u/idol/46Kira-Tsubasa-yMqjxx.png" alt="綺羅ツバサ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/A-RISE.png?&0" alt="a-rise logo" class="group-logo">10-24</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/123Hanamiya-Nina-JCu4Bh.jpg" alt="Niina Hanamiya">
+                        <p title="花宮初奈">Niina Hanamiya</p>
+                <img src="https://i.idol.st/u/idol/205Kozue-Otomune-aCtlXr.png" alt="乙宗梢" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">10-24</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/2Iida-Riho-8bKxMR.jpg" alt="Iida Riho">
+                        <p title="飯田里穂">Iida Riho</p>
+                <img src="https://i.idol.st/u/idol/2Hoshizora-Rin-sgemWZ.png" alt="星空凛" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">10-26</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/173Yoneme-Mei-tsct9m.png" alt="Mei Yoneme">
+                        <p title="米女メイ">Mei Yoneme</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">10-29</div></div></div><div class="month"><h2>November</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/2Hoshizora-Rin-sgemWZ.png" alt="Rin Hoshizora">
+                        <p title="星空凛">Rin Hoshizora</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">11-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/96Suzuhara-Nozomi-DYfS1L.jpeg" alt="Nozomi Suzuhara">
+                        <p title="鈴原希実">Nozomi Suzuhara</p>
+                <img src="https://i.idol.st/u/idol/172Sakurakoji-Kinako-dQVwkG.png" alt="桜小路きな子" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">11-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/8Suwa-Nanaka-EOJIgj.png" alt="Nanaka Suwa">
+                        <p title="諏訪ななか">Nanaka Suwa</p>
+                <img src="https://i.idol.st/u/idol/8Matsuura-Kanan-qlLtYT.png" alt="松浦果南" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Aqours.png?0" alt="aqours logo" class="group-logo">11-02</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/eggV47P.jpeg" alt="Airi Yamamoto">
+                        <p title="山本愛梨">Airi Yamamoto</p>
+                <img src="https://i.idol.st/u/idol/198Harukaze-Sayaka-4qcldd.png" alt="晴風サヤカ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">11-08</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/131Kurusu-Rin-lTg46J.jpg" alt="Rin Kurusu">
+                        <p title="来栖りん">Rin Kurusu</p>
+                <img src="https://i.idol.st/u/idol/226Hime-Anyoji-r3RVtI.png" alt="安養寺姫芽" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">11-08</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/member_10.png" alt="Sasaki Shion">
+                        <p title="佐々木翔音">Sasaki Shion</p>
+                <div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">11-11</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/97Tennoji-Rina-tZo8rZ.png" alt="Rina Tennoji">
+                        <p title="天王寺璃奈">Rina Tennoji</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">11-13</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/206Tsuzuri-Yugiri-jGUNrA.png" alt="Tsuzuri Yugiri">
+                        <p title="夕霧綴理">Tsuzuri Yugiri</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">11-17</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/136Terada-Hikari-jVEL69.jpg" alt="Hikari Terada">
+                        <p title="寺田光">Hikari Terada</p>
+                <img src="https://i.idol.st/u/idol/193Hojo-Yukino-xwlvUa.png" alt="北条ユキノ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">11-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/125Kan-Kanna-zGHqk8.jpg" alt="Kanna Kan">
+                        <p title="菅叶和">Kanna Kan</p>
+                <img src="https://i.idol.st/u/idol/207Rurino-Osawa-dh0WWJ.png" alt="大沢瑠璃乃" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">11-19</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/122Hazuki-Ren-vhPCUT.png" alt="Ren Hazuki">
+                        <p title="葉月恋">Ren Hazuki</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">11-24</div></div></div><div class="month"><h2>December</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/9LMkfcv.png" alt="Izumi Katsuragi">
+                        <p title="桂城泉">Izumi Katsuragi</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">12-01</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/133Hiiragi-Mao-yuL7qs.png" alt="Mao Hiiragi">
+                        <p title="柊摩央">Mao Hiiragi</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Sunny-Passion.png?&0" alt="sunny-passion logo" class="group-logo">12-02</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/123Mia-Taylor-88B8V6.png" alt="Mia Taylor">
+                        <p title="ミア・テイラー">Mia Taylor</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">12-06</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/4Nitta-Emi-GuHpgY.jpg" alt="Emi Nitta">
+                        <p title="新田恵海">Emi Nitta</p>
+                <img src="https://i.idol.st/u/idol/4Kousaka-Honoka-m1dEvp.png" alt="高坂穂乃果" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">12-10</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/43Kazuno-Sarah-J0mfHD.png" alt="Leah Kazuno">
+                        <p title="鹿角理亞">Leah Kazuno</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Saint-Snow.png?&0" alt="saint-snow logo" class="group-logo">12-12</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/qc1pOvl.jpeg" alt="Miu Miyake">
+                        <p title="三宅美羽">Miu Miyake</p>
+                <img src="https://i.imgur.com/as3GpTa.png" alt="セラス・柳田・リリエンフェルト" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">12-14</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/50Konoe-Kanata-xB16n7.png" alt="Kanata Konoe">
+                        <p title="近江彼方">Kanata Konoe</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">12-16</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/208Megumi-Fujishima-7wXwZW.png" alt="Megumi Fujishima">
+                        <p title="藤島慈">Megumi Fujishima</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0" alt="hasu logo" class="group-logo">12-20</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.imgur.com/Z7FL9xn.jpeg" alt="Alie Nishida">
+                        <p title="西田有愛">Alie Nishida</p>
+                <img src="https://i.idol.st/u/idol/197Kurusu-Toa-CHkzgl.png" alt="来栖トア" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo">12-21</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/23Kusunoki-Tomori-iQJ2A0.jpg" alt="Tomori Kusunoki">
+                        <p title="楠木ともり">Tomori Kusunoki</p>
+                <img src="https://i.idol.st/u/idol/110Yuki-Setsuna-44Ojdt.png" alt="優木せつ菜" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0" alt="niji logo" class="group-logo">12-22</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/19Satou-Hinata-IlEXSQ.png" alt="Hinata Satou">
+                        <p title="佐藤日向">Hinata Satou</p>
+                <img src="https://i.idol.st/u/idol/43Kazuno-Sarah-J0mfHD.png" alt="鹿角聖良" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Saint-Snow.png?&0" alt="saint-snow logo" class="group-logo">12-23</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/voiceactress/tthumb/18Tokui-Sora-RUM4WA.jpg" alt="Sora Tokui">
+                        <p title="徳井青空">Sora Tokui</p>
+                <img src="https://i.idol.st/u/idol/18Yazawa-Nico-agidhY.png" alt="矢澤にこ" class="small-circle"><div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0" alt="muse logo" class="group-logo">12-26</div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/209Tomari-Onitsuka-oZzgZo.png" alt="Tomari Onitsuka">
+                        <p title="鬼塚冬毬">Tomari Onitsuka</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/Liella.png?0" alt="liella logo" class="group-logo">12-28</div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/1.png" alt="Honon Ayasaki">
+                        <p title="綾咲穂音">Honon Ayasaki</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_1.png" alt="高橋ポルカ" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo">12-31</div></div></div><div class="month"><h2>Unknown birthday</h2><div class="birthday-list">
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/46Kira-Tsubasa-yMqjxx.png" alt="Tsubasa Kira">
+                        <p title="綺羅ツバサ">Tsubasa Kira</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/A-RISE.png?&0" alt="a-rise logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/99Toudou-Erena-l39Dhy.png" alt="Erena Toudou">
+                        <p title="統堂英玲奈">Erena Toudou</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/A-RISE.png?&0" alt="a-rise logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/111Yuki-Anju-N6q54P.png" alt="Anju Yuki">
+                        <p title="優木あんじゅ">Anju Yuki</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/A-RISE.png?&0" alt="a-rise logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/190Tsubaki-Rurika-amEG6Z.png" alt="Rurika Tsubaki">
+                        <p title="椿ルリカ">Rurika Tsubaki</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/191Sumeragi-Yuzuha-ltctRd.png" alt="Yuzuha Sumeragi">
+                        <p title="皇ユズハ">Yuzuha Sumeragi</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/193Hojo-Yukino-xwlvUa.png" alt="Yukino Hojo">
+                        <p title="北条ユキノ">Yukino Hojo</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/192Amakusa-Hikaru-qa5MDe.png" alt="Hikaru Amakusa">
+                        <p title="天草ヒカル">Hikaru Amakusa</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/194Mikasa-Maya-5rkciw.png" alt="Maya Mikasa">
+                        <p title="三笠マーヤ">Maya Mikasa</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/195Takizawa-Anzu-MTHK7H.png" alt="Anzu Takizawa">
+                        <p title="滝沢アンズ">Anzu Takizawa</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/196Wakatsuki-Misuzu-FUfIz2.png" alt="Misuzu Wakatsuki">
+                        <p title="若槻ミスズ">Misuzu Wakatsuki</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/197Kurusu-Toa-CHkzgl.png" alt="Toa Kurusu">
+                        <p title="来栖トア">Toa Kurusu</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/199Suzuka-Rena-qLoloz.png" alt="Rena Suzuka">
+                        <p title="鈴賀レナ">Rena Suzuka</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://i.idol.st/u/idol/198Harukaze-Sayaka-4qcldd.png" alt="Sayaka Harukaze">
+                        <p title="晴風サヤカ">Sayaka Harukaze</p>
+                <div class="group-logo-container"><img src="https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0" alt="musical logo" class="group-logo"></div></div>
+                    <div class="birthday-item">
+                        <img src="https://www.lovelive-anime.jp/lovehigh/img/cv/10.png" alt="Aoi Suzunose">
+                        <p title="涼ノ瀬葵音">Aoi Suzunose</p>
+                <img src="https://www.lovelive-anime.jp/lovehigh/img/member_10.png" alt="佐々木翔音" class="small-circle"><div class="group-logo-container"><img src="https://i.imgur.com/56JKoVy.png" alt="bluebird logo" class="group-logo"></div></div></div>
+    </body>
+    </html>
+    

@@ -1,0 +1,222 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Birthday List</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            h2 {
+                color: #4CAF50;
+            }
+            .month {
+                margin-top: 30px;
+            }
+            .birthday-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .birthday-item {
+                border: 1px solid #ccc;
+                padding: 5px;
+                text-align: center;
+                width: 150px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .birthday-item img {
+                width: 100px;
+                height: 130px;
+                object-fit: cover;
+            }
+
+            .birthday-item p {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 14px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .birthday-item .group-logo-container {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start; /* Align text and logo to the left */
+                gap: 5px;
+                font-size: 14px;
+                width: 100%;
+                padding-left: 10px; /* Small left padding for better spacing */
+            }
+
+            .birthday-item .group-logo {
+                width: 45px;
+                height: 20px;
+            }
+            .birthday-item .small-circle {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Character Birthdays by Month</h1>
+
+                
+                
+                
+                <script>
+		const jsonURL = 'https://kronalt.github.io/LL-birthdays/calendar.json';
+
+		let birthdayData = [];
+
+		function loadBirthdays() {
+		    fetch(jsonURL)
+			.then(res => res.json())
+			.then(data => {
+			    birthdayData = data.filter(p => p.group !== 'llsif'); // Remove unwanted
+			    buildFilters();
+			    displayBirthdays();
+			});
+		}
+
+		function buildFilters() {
+		    const groupSet = new Set();
+		    const characterSet = new Set();
+
+		    birthdayData.forEach(p => {
+			groupSet.add(p.group);
+			if (p.character) characterSet.add(p.character);
+		    });
+
+		    const groupFilter = document.createElement('select');
+		    groupFilter.id = 'groupFilter';
+		    groupFilter.innerHTML = '<option value="">All Groups</option>' + 
+			Array.from(groupSet).sort().map(g => `<option value="${g}">${g}</option>`).join('');
+		    
+		    const typeFilter = document.createElement('select');
+		    typeFilter.id = 'typeFilter';
+		    typeFilter.innerHTML = '<option value="">All Types</option><option value="C">Characters</option><option value="V">Seiyuus</option>';
+		    
+		    const filterContainer = document.createElement('div');
+		    filterContainer.innerHTML = '<strong>Filters:</strong><br>';
+		    filterContainer.appendChild(groupFilter);
+		    filterContainer.appendChild(typeFilter);
+		    document.body.insertBefore(filterContainer, document.body.children[1]);
+
+		    groupFilter.addEventListener('change', displayBirthdays);
+		    typeFilter.addEventListener('change', displayBirthdays);
+		}
+
+
+
+		function displayBirthdays() {
+		    const selectedGroup = document.getElementById('groupFilter').value;
+		    const selectedtype = document.getElementById('typeFilter').value;
+		    console.log(document.getElementById('typeFilter').value);
+
+		    const months = document.querySelectorAll('.month');
+		    months.forEach(month => month.remove());
+
+		    const birthdaysByMonth = {};
+
+		    birthdayData.forEach(p => {
+			if (selectedGroup && p.group !== selectedGroup) return;
+			if (selectedtype && p.type !== selectedtype) return;
+
+			const month = p.birth.slice(0, 2);
+			if (!birthdaysByMonth[month]) birthdaysByMonth[month] = [];
+			birthdaysByMonth[month].push(p);
+		    });
+
+		    const monthNames = {
+			"99":"Unknown birthday", "01":"January", "02":"February", "03":"March", "04":"April", "05":"May", "06":"June",
+			"07":"July", "08":"August", "09":"September", "10":"October", "11":"November", "12":"December"
+		    };
+
+		    const groupLogos = {
+			"muse": "https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0",
+			"a-rise": "https://i.idol.st/static/img/i_unit/A-RISE.png?&0",
+			"aqours": "https://i.idol.st/static/img/i_unit/Aqours.png?0",
+			"saint-snow": "https://i.idol.st/static/img/i_unit/Saint-Snow.png?&0",
+			"niji": "https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0",
+			"liella": "https://i.idol.st/static/img/i_unit/Liella.png?0",
+			"sunny-passion": "https://i.idol.st/static/img/i_unit/Sunny-Passion.png?&0",
+			"musical": "https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0",
+			"hasu": "https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0",
+			"musical-drama": "https://i.imgur.com/EZ9ncn6.png",
+			"bluebird": "https://i.imgur.com/56JKoVy.png",
+		    };
+
+		    Object.keys(birthdaysByMonth).sort().forEach(month => {
+			const container = document.createElement('div');
+			container.className = 'month';
+			const title = document.createElement('h2');
+			title.textContent = monthNames[month];
+			container.appendChild(title);
+
+			const list = document.createElement('div');
+			list.className = 'birthday-list';
+
+			birthdaysByMonth[month].sort((a, b) => +a.birth.slice(2) - +b.birth.slice(2)).forEach(p => {
+			    const item = document.createElement('div');
+			    item.className = 'birthday-item';
+
+			    const img = document.createElement('img');
+			    img.src = p.image;
+			    img.alt = p.name_en;
+			    item.appendChild(img);
+
+			    const nameP = document.createElement('p');
+			    nameP.title = p.name;
+			    nameP.textContent = p.name_en;
+			    item.appendChild(nameP);
+
+			    if (p.character) {
+				const charImg = document.createElement('img');
+				const char = birthdayData.find(c => c.name === p.character && c.type === "C");
+				if (char) {
+				    charImg.src = char.image;
+				    charImg.alt = p.character;
+				    charImg.className = 'small-circle';
+				    item.appendChild(charImg);
+				}
+			    }
+
+			    const groupDiv = document.createElement('div');
+			    groupDiv.className = 'group-logo-container';
+			    if (groupLogos[p.group]) {
+				groupDiv.innerHTML = `<img src="${groupLogos[p.group]}" class="group-logo">`;
+			    }
+			    if(p.birth === '9999'){ //unknown
+			    	groupDiv.innerHTML += ' ';
+			    }else{
+			    	groupDiv.innerHTML += `${p.birth.slice(0, 2)}-${p.birth.slice(2)}`;
+			    }
+			    item.appendChild(groupDiv);
+
+			    list.appendChild(item);
+			});
+
+			container.appendChild(list);
+			document.body.appendChild(container);
+		    });
+		}
+
+		window.onload = loadBirthdays;
+		</script>
+    </body>
+    </html>
+    
