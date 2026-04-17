@@ -160,7 +160,10 @@
 	{"name": "徒町小鈴", "name_en": "Kosuzu Kachimachi","birth": "0228", "type": "C", "group": "hasu", "image": "https://i.idol.st/u/idol/225Kosuzu-Kachimachi-NQRyno.png"},
 	{"name": "安養寺姫芽", "name_en": "Hime Anyoji","birth": "0924", "type": "C", "group": "hasu", "image": "https://i.idol.st/u/idol/226Hime-Anyoji-r3RVtI.png"},
 	{"name": "桂城泉", "name_en": "Izumi Katsuragi","birth": "1201", "type": "C", "group": "hasu", "image": "https://i.imgur.com/9LMkfcv.png"},
-	{"name": "セラス・柳田・リリエンフェルト", "name_en": "Ceras Yanagida Lilienfeld","birth": "0626", "type": "C", "group": "hasu", "image": "https://i.imgur.com/as3GpTa.png"},
+	{"name": "セラス・柳田・リリエンフェルト", "name_en": "Ceras Yanagida Lilienfeld","birth": "0626", "type": "C", "group": "hasu", "image": "https://i.imgur.com/as3GpTa.png"},	
+	{"name": "錦上マイカ", "name_en": "Maika Kinjou","birth": "9999", "type": "C", "group": "hasu", "image": "https://i.imgur.com/kvQE7Fj.png"},
+	{"name": "令沢葵", "name_en": "Aoi Reisawa","birth": "9999", "type": "C", "group": "hasu", "image": "https://i.imgur.com/QVYqMvJ.png"},
+	{"name": "紫輪みおん", "name_en": "Mion Shinogawa","birth": "9999", "type": "C", "group": "hasu", "image": "https://i.imgur.com/BbTFUS9.png"},
 
 	{"name": "楡井希美", "name_en": "Nozomi Nirei","birth": "0521", "type": "V", "character": "日野下花帆", "group": "hasu", "tips": "蓮ノ空 日野下花帆 役", "image": "https://i.idol.st/u/voiceactress/tthumb/122Nirei-Nozomi-AeCjl3.jpg"},
 	{"name": "花宮初奈", "name_en": "Niina Hanamiya","birth": "1024", "type": "V", "character": "乙宗梢", "group": "hasu", "tips": "蓮ノ空 乙宗梢 役", "image": "https://i.idol.st/u/voiceactress/tthumb/123Hanamiya-Nina-JCu4Bh.jpg"},
@@ -173,6 +176,9 @@
 	{"name": "来栖りん", "name_en": "Rin Kurusu","birth": "1108", "type": "V", "character": "安養寺姫芽", "group": "hasu", "tips": "蓮ノ空 安養寺姫芽 役", "image": "https://i.idol.st/u/voiceactress/tthumb/131Kurusu-Rin-lTg46J.jpg"},
 	{"name": "進藤あまね", "name_en": "Amane Shindou","birth": "0420", "type": "V", "character": "桂城泉", "group": "hasu", "tips": "Edel Note 桂城泉 役",  "image": "https://i.imgur.com/Ztz9nSC.jpeg"},
 	{"name": "三宅美羽", "name_en": "Miu Miyake","birth": "1214", "type": "V", "character": "セラス・柳田・リリエンフェルト", "group": "hasu", "tips": "Edel Note セラス・柳田・リリエンフェルト 役",  "image": "https://i.imgur.com/qc1pOvl.jpeg"},
+	{"name": "星宮じゅりあ", "name_en": "Julia Hoshimiya","birth": "0411", "type": "V", "character": "錦上マイカ", "group": "hasu", "tips": "蓮ノ空 106期 錦上マイカ 役",  "image": "https://i.imgur.com/fcdTkuG.png"},
+	{"name": "朝陽花菜", "name_en": "Kana Asahi","birth": "1008", "type": "V", "character": "令沢葵", "group": "hasu", "tips": "蓮ノ空 106期 令沢葵 役",  "image": "https://i.imgur.com/aTDXQQy.png"},
+	{"name": "湯浅かなえ", "name_en": "Kanae Yuasa","birth": "0805", "type": "V", "character": "紫輪みおん", "group": "hasu", "tips": "蓮ノ空 106期 令沢葵 役",  "image": "https://i.imgur.com/m3ZTcuu.png"},
 	
 	
 	
@@ -197,7 +203,7 @@
 	{"name": "奥村優季", "name_en": "Yuki Okumura","birth": "1013", "type": "V", "character": "春宮ゆくり", "group": "bluebird", "tips": "イキヅライブ 春宮ゆくり 役", "image": "https://i.postimg.cc/028YbtmK/7.png"},
 	{"name": "天沢朱音", "name_en": "Akane Amasawa","birth": "0119", "type": "V", "character": "此花輝夜", "group": "bluebird", "tips": "イキヅライブ 此花輝夜 役", "image": "https://i.postimg.cc/Nfg65NTr/8.png"},
 	{"name": "小戸森穂花", "name_en": "Honoka Kotomori","birth": "0123", "type": "V", "character": "山田真緑", "group": "bluebird", "tips": "イキヅライブ 山田真緑 役", "image": "https://i.postimg.cc/bNzxs6br/9.png"},
-	{"name": "涼ノ瀬葵音", "name_en": "Aoi Suzunose","birth": "9999", "type": "V", "character": "佐々木翔音", "group": "bluebird", "tips": "イキヅライブ 佐々木翔音 役", "image": "https://i.postimg.cc/59559cHz/10.png"},
+	{"name": "涼ノ瀬葵音", "name_en": "Aoi Suzunose","birth": "0618", "type": "V", "character": "佐々木翔音", "group": "bluebird", "tips": "イキヅライブ 佐々木翔音 役", "image": "https://i.postimg.cc/59559cHz/10.png"},
 
 
 
