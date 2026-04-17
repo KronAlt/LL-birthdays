@@ -148,7 +148,12 @@
 	{"name": "里菜", "name_en": "Rina","birth": "0618", "type": "V", "character": "鈴賀レナ", "group": "musical", "tips": "ミュージカル 鈴賀レナ 役(2025/TVドラマ)", "image": "https://i.imgur.com/I7rkL37.jpeg"},
 	{"name": "青山瑠里", "name_en": "Ruri Aoyama","birth": "0131", "type": "V", "character": "晴風サヤカ", "group": "musical", "tips": "ミュージカル 晴風サヤカ 役(2023)", "image": "https://i.idol.st/u/voiceactress/tthumb/117Aoyama-Ruri-9dx0m7.jpg"},
 	{"name": "西田ひらり", "name_en": "Hirari Nishida","birth": "0630", "type": "V", "character": "晴風サヤカ", "group": "musical", "tips": "ミュージカル 晴風サヤカ 役(2024)", "image": "https://i.imgur.com/fVIya70.jpeg"},
-	{"name": "山本愛梨", "name_en": "Airi Yamamoto","birth": "1108", "type": "V", "character": "晴風サヤカ", "group": "musical", "tips": "ミュージカル 晴風サヤカ 役(2024-2025/TVドラマ)", "image": "https://i.imgur.com/eggV47P.jpeg"},
+	{"name": "山本愛梨", "name_en": "Airi Yamamoto","birth": "1108", "type": "V", "character": "晴風サヤカ", "group": "musical", "tips": "ミュージカル 晴風サヤカ 役(2024-2025/TVドラマ)", "image": "https://i.imgur.com/eggV47P.jpeg"},	
+	{"name": "清水理子", "name_en": "Riko Shimizu","birth": "0128", "type": "V", "character": "天草ヒカル", "group": "musical", "tips": "ミュージカル 天草ヒカル 役(2026)", "image": "https://i.postimg.cc/Qt3Vn0MS/qing-shui-li-zi.jpg"},
+	{"name": "宮本佳林", "name_en": "Karin Miyamoto","birth": "1201", "type": "V", "character": "滝沢アンズ", "group": "musical", "tips": "ミュージカル 滝沢アンズ 役(2026)", "image": "https://i.postimg.cc/Lsz8fLVg/3afdba15b7d0e9382da2a94d149697096b7a93a2.jpg"},
+	{"name": "及川結依", "name_en": "Yui Oikawa","birth": "1121", "type": "V", "character": "来栖トア", "group": "musical", "tips": "ミュージカル 来栖トア 役(2026)", "image": "https://i.postimg.cc/BZyfStT0/ji-chuan-jie-yi.jpg"},
+	{"name": "井上音生", "name_en": "Neo Inoue","birth": "0818", "type": "V", "character": "鈴賀レナ", "group": "musical", "tips": "ミュージカル 鈴賀レナ 役(2026)", "image": "https://i.postimg.cc/BnSrNDsg/jing-shang-yin-sheng.jpg"},
+	{"name": "村山結香", "name_en": "Yuuka Murayama","birth": "0215", "type": "V", "character": "晴風サヤカ", "group": "musical", "tips": "ミュージカル 晴風サヤカ 役(2026)", "image": "https://i.postimg.cc/SNTdFzCc/cun-shan-jie-xiang.jpg"},
 
 	{"name": "日野下花帆", "name_en": "Kaho Hinoshita","birth": "0522", "type": "C", "group": "hasu", "image": "https://i.idol.st/u/idol/203Kaho-Hinoshita-obf8Nh.png"},
 	{"name": "乙宗梢", "name_en": "Kozue Otomune","birth": "0615", "type": "C", "group": "hasu", "image": "https://i.idol.st/u/idol/205Kozue-Otomune-aCtlXr.png"},
