@@ -7,5 +7,5 @@ python birthdays.py
 ```
 
 ## Github Pages
-https://kronalt.github.io/LL-birthdays/birthdays.html
+https://kronalt.github.io/LL-birthdays/birthdays.html  
 https://kronalt.github.io/LL-birthdays/birthdays_filters.html
