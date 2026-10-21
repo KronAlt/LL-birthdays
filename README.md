@@ -9,7 +9,7 @@ python birthdays.py
 index.html is a page that uses javascript to populate the UI from the JSON files.
 
 ## Github Pages
-https://kronalt.github.io/
+https://kronalt.github.io/LL-birthdays/
 
 Non-Javascript:
 https://kronalt.github.io/LL-birthdays/birthdays.html  
