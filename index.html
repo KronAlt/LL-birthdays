@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore Love Live! character and seiyuu birthdays by month and group.">
+    <meta name="color-scheme" content="light dark">
+    <title>Love Live! Birthday Calendar</title>
+    <script>
+        // Apply a saved choice before painting; otherwise CSS follows the browser.
+        try {
+            const savedTheme = localStorage.getItem('ll-birthdays-theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+                document.documentElement.dataset.theme = savedTheme;
+            }
+        } catch { /* Browser preferences still work when storage is unavailable. */ }
+    </script>
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #faf8fa;
+            --surface: #fff;
+            --soft: #f3eef3;
+            --text: #302c36;
+            --muted: #716775;
+            --border: #e6dfe7;
+            --accent: #ad386f;
+            --accent-soft: #f9e8f0;
+            --shadow: 0 4px 16px rgb(49 28 45 / 4%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                --page: #17151c;
+                --surface: #211e28;
+                --soft: #2c2733;
+                --text: #f3edf5;
+                --muted: #b5aabb;
+                --border: #39313f;
+                --accent: #f29bc2;
+                --accent-soft: #3e2636;
+                --shadow: 0 4px 16px rgb(0 0 0 / 12%);
+            }
+        }
+
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --page: #17151c;
+            --surface: #211e28;
+            --soft: #2c2733;
+            --text: #f3edf5;
+            --muted: #b5aabb;
+            --border: #39313f;
+            --accent: #f29bc2;
+            --accent-soft: #3e2636;
+            --shadow: 0 4px 16px rgb(0 0 0 / 12%);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-padding-top: 20px; }
+        body {
+            margin: 0;
+            background: var(--page);
+            color: var(--text);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.5;
+        }
+        button, select { font: inherit; }
+        button, a, select { -webkit-tap-highlight-color: transparent; }
+        button { cursor: pointer; }
+        a { color: var(--accent); text-underline-offset: 3px; }
+        :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+        [hidden] { display: none !important; }
+        .icon-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
+        .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+        .shell { width: min(100%, 1200px); margin-inline: auto; padding-inline: 24px; }
+        .skip-link { position: absolute; top: -80px; left: 16px; z-index: 5; padding: 10px; background: var(--surface); }
+        .skip-link:focus { top: 12px; }
+
+        .page-header { padding-top: 24px; }
+        .topbar, .page-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+        .brand { display: inline-flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+        .brand .icon { color: var(--accent); width: 22px; height: 22px; }
+        .theme-switch { display: flex; flex-shrink: 0; gap: 3px; padding: 4px; border: 1px solid var(--border); border-radius: 24px; background: var(--surface); }
+        .theme-switch button { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--muted); }
+        .theme-switch button:hover { background: var(--soft); color: var(--text); }
+        .theme-switch button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+        .intro { padding-block: 34px 28px; }
+        h1 { margin: 0 0 8px; font-size: clamp(28px, 5vw, 42px); letter-spacing: -.04em; line-height: 1.2; }
+        .intro p { margin: 0; color: var(--muted); }
+
+        .filters { display: flex; flex-wrap: wrap; align-items: end; gap: 16px; padding: 20px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); }
+        .filter-field { display: flex; flex-direction: column; gap: 6px; flex: 1 1 240px; min-width: 0; }
+        .filter-field.type-field { flex: 0 1 250px; }
+        .filter-field label, .field-label { color: var(--muted); font-size: 12px; font-weight: 650; }
+        .filter-field.mode-field { flex: 0 1 180px; }
+        .mode-switch { display: flex; padding: 3px; border: 1px solid var(--border); border-radius: 8px; background: var(--page); }
+        .mode-switch button { flex: 1; min-height: 34px; padding: 5px 12px; border: 0; border-radius: 5px; background: transparent; color: var(--muted); font-size: 13px; }
+        .mode-switch button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 650; }
+        .mode-switch button:disabled { cursor: default; opacity: .55; }
+        select { width: 100%; min-height: 42px; padding: 8px 32px 8px 12px; border: 1px solid var(--border); border-radius: 8px; background-color: var(--page); color: var(--text); text-overflow: ellipsis; }
+        select:disabled { opacity: .55; }
+        .reset-button { min-height: 42px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; background: transparent; color: var(--muted); }
+        .reset-button:hover { color: var(--accent); border-color: var(--accent); }
+        .calendar-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 20px 10px; }
+        #result-count { margin: 0; color: var(--muted); font-size: 13px; }
+        .month-nav { display: flex; flex-wrap: wrap; gap: 4px; }
+        .month-nav a { padding: 5px 8px; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none; }
+        .month-nav a:hover, .month-nav a:focus-visible { color: var(--accent); background: var(--accent-soft); }
+
+        .month { margin-block: 28px 40px; }
+        .month-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .month-number { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 750; }
+        .month-heading h2 { margin: 0; font-size: 19px; letter-spacing: -.02em; }
+        .month-heading::after { content: ""; order: 1; height: 1px; flex: 1; background: var(--border); }
+        .export-button { flex-shrink: 0; min-height: 34px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--muted); font-size: 12px; }
+        .export-button:hover { border-color: var(--accent); color: var(--accent); }
+        .export-button:disabled { cursor: wait; opacity: .65; }
+        .month-heading .export-actions { order: 2; margin-inline-start: auto; margin-bottom: 0; }
+        .export-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin-bottom: 12px; }
+        .export-current-label, .export-desktop-button { display: none; }
+        .export-status { margin: 4px 0 16px; color: var(--muted); font-size: 13px; }
+        .month-count { color: var(--muted); font-size: 12px; }
+        .birthday-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 0; padding: 0; list-style: none; }
+        .birthday-card { flex: 0 1 174px; min-width: 0; padding: 16px 12px 12px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); text-align: center; box-shadow: var(--shadow); transition: transform .15s ease, border-color .15s ease; }
+        .birthday-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+        .portrait { position: relative; width: 110px; margin: 0 auto 12px; }
+        .portrait-photo { display: block; width: 110px; height: 142px; object-fit: cover; object-position: center top; border-radius: 9px; background: var(--soft); font-size: 12px; }
+        .character-badge { position: absolute; top: -6px; right: -16px; width: 44px; height: 44px; border: 3px solid var(--surface); border-radius: 50%; background: white; box-shadow: 0 2px 8px rgb(0 0 0 / 14%); cursor: help; }
+        .character-badge > img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; }
+        .character-tooltip { position: absolute; z-index: 2; top: calc(100% + 8px); right: -4px; width: max-content; max-width: 150px; padding: 7px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--text); color: var(--surface); font-size: 12px; font-weight: 500; line-height: 1.4; opacity: 0; visibility: hidden; pointer-events: none; }
+        .character-badge:hover .character-tooltip, .character-badge:focus .character-tooltip { visibility: visible; opacity: 1; }
+        .birthday-card h3 { display: flex; align-items: center; justify-content: center; min-height: 2.8em; margin: 0 0 9px; font-size: 14px; line-height: 1.4; overflow-wrap: anywhere; }
+        .card-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid var(--border); }
+        .group-logo-container { display: grid; place-items: center; width: 63px; height: 30px; padding: 4px; border-radius: 6px; background: white; }
+        .group-logo { display: block; width: 100%; height: 100%; object-fit: contain; }
+        .group-fallback { font-size: 10px; color: #302c36; line-height: 1.1; overflow-wrap: anywhere; }
+        .birthday-date { color: var(--muted); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .status-panel { margin-block: 32px; padding: 36px 20px; border: 1px dashed var(--border); border-radius: 14px; text-align: center; color: var(--muted); }
+        .status-panel p { margin: 0 0 12px; }
+        .status-panel p:last-child { margin-bottom: 0; }
+        .page-footer { margin-top: 36px; padding-block: 22px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+        .footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+
+        @media (max-width: 600px) {
+            .shell { padding-inline: 16px; }
+            .intro { padding-block: 28px 24px; }
+            .filters { gap: 12px; padding: 16px; }
+            .filter-field, .filter-field.type-field, .filter-field.mode-field { flex: 1 1 100%; }
+            .reset-button { width: 100%; }
+            .calendar-toolbar { gap: 14px; }
+            .month-nav { gap: 2px; }
+            .birthday-list { gap: 12px; }
+        }
+        @media (max-width: 420px) {
+            .brand { font-size: 10px; gap: 6px; letter-spacing: .06em; }
+            .birthday-card { flex-basis: calc((100% - 12px) / 2); padding-inline: 8px; }
+            .portrait, .portrait-photo { width: 100px; }
+            .portrait-photo { height: 130px; }
+            .character-badge { right: -10px; width: 40px; height: 40px; }
+            .card-meta { gap: 4px; }
+            .group-logo-container { width: 54px; }
+            .month-heading { gap: 8px; }
+            .month-heading h2 { font-size: 17px; }
+            .month-count { font-size: 11px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .birthday-card { transition: none; }
+            .birthday-card:hover { transform: none; }
+        }
+
+        /* Calendar views share the original page's colors, cards, and controls. */
+        .filter-field.view-field { flex: 0 1 220px; }
+        .year-navigation { display: flex; align-items: center; gap: 12px; }
+        .year-navigation h2 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+        .arrow-button, .close-button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); }
+        .arrow-button:hover, .close-button:hover { color: var(--accent); border-color: var(--accent); }
+        .arrow-button:disabled { opacity: .4; cursor: default; }
+        .view-hint { margin: 6px 0 24px; color: var(--muted); font-size: 13px; }
+        .calendar-layout { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 24px; }
+        .calendar-layout.with-details { grid-template-columns: minmax(0, 1fr) 290px; }
+        .calendar-column { min-width: 0; }
+        .month-layout { position: relative; min-width: 0; margin-bottom: 28px; }
+        .month-layout.with-details { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 24px; }
+        .month-layout > .calendar-month { min-width: 0; margin-bottom: 0; }
+        .month-layout > .detail-panel { position: absolute; inset: 0 0 0 auto; width: 290px; height: auto; max-height: none; }
+        .calendar-month { margin-bottom: 28px; padding: 20px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); }
+        .calendar-month-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+        .calendar-month-header h2 { margin: 0; font-size: 20px; letter-spacing: -.02em; text-align: center; }
+        .calendar-month-header p { margin: 3px 0 0; color: var(--muted); font-size: 12px; text-align: center; }
+        .month-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        .month-table th { padding: 10px 0; color: var(--muted); font-size: 11px; font-weight: 650; text-transform: uppercase; }
+        abbr[title] { text-decoration: none; }
+        .month-table td { position: relative; height: 96px; padding: 0; border: 1px solid var(--border); vertical-align: top; }
+        .month-table td.empty-day { background: var(--page); }
+        .day-button, .plain-day { display: flex; flex-direction: column; align-items: stretch; gap: 8px; width: 100%; min-height: 96px; padding: 8px; border: 0; background: transparent; color: var(--text); text-align: left; font: inherit; }
+        .day-button { height: 100%; border-radius: 4px; }
+        .calendar-month:not(.mini-month) .day-button { position: absolute; inset: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; }
+        .day-button:hover, .day-button:focus-visible { background: var(--accent-soft); }
+        .day-button[aria-expanded="true"] { background: var(--accent-soft); box-shadow: inset 0 0 0 2px var(--accent); }
+        .day-button:focus-visible { outline-offset: -3px; }
+        .day-number { align-self: flex-start; font-size: 12px; font-weight: 650; font-variant-numeric: tabular-nums; }
+        .is-today .day-number { padding: 0 5px; border-radius: 5px; background: var(--accent); color: var(--surface); }
+        .day-portraits { --portrait-gap: 4px; container-type: size; display: flex; align-items: flex-end; justify-content: center; gap: var(--portrait-gap); min-width: 0; min-height: 0; }
+        /* Fit circles to both the remaining height and each birthday's share of the width. */
+        .mini-portrait { --portrait-size: min(100cqh, calc((100cqw - (var(--portrait-count) - 1) * var(--portrait-gap)) / var(--portrait-count))); position: relative; display: inline-flex; flex: 0 0 var(--portrait-size); width: var(--portrait-size); height: var(--portrait-size); border-radius: 50%; background: var(--soft); }
+        .mini-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 50%; }
+        .portrait-label { position: absolute; z-index: 5; bottom: calc(100% + 7px); left: 50%; width: max-content; max-width: 160px; padding: 6px 9px; transform: translateX(-50%); border-radius: 7px; background: var(--text); color: var(--surface); font-size: 12px; line-height: 1.4; opacity: 0; visibility: hidden; pointer-events: none; }
+        .mini-portrait:hover .portrait-label { opacity: 1; visibility: visible; }
+        .month-table td:nth-child(-n + 2) .portrait-label { left: 0; transform: none; }
+        .month-table td:nth-last-child(-n + 2) .portrait-label { right: 0; left: auto; transform: none; }
+        .year-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+        .mini-month { min-width: 0; margin-bottom: 0; padding: 14px; }
+        .mini-month .calendar-month-header { justify-content: center; margin-bottom: 6px; }
+        .month-title-button { padding: 5px 10px; border: 0; border-radius: 7px; background: transparent; color: var(--text); font-size: 14px; font-weight: 700; }
+        .month-title-button:hover { background: var(--accent-soft); color: var(--accent); }
+        .mini-month .month-table th { padding: 5px 0; font-size: 10px; }
+        .mini-month .month-table td { height: 30px; border: 0; }
+        .mini-month .month-table td.empty-day { background: transparent; }
+        .mini-month .day-button, .mini-month .plain-day { align-items: center; justify-content: center; gap: 1px; min-height: 30px; padding: 2px; border-radius: 6px; }
+        .mini-month .day-number { align-self: center; font-size: 11px; }
+        .mini-month .has-birthdays { color: var(--accent); font-weight: 700; background: var(--accent-soft); }
+        .birthday-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+        .unknown-birthdays { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-block: 24px; padding: 18px; border: 1px dashed var(--border); border-radius: 14px; }
+        .unknown-birthdays p { margin: 0; font-size: 13px; color: var(--muted); }
+        .unknown-birthdays strong { display: block; margin-bottom: 3px; color: var(--text); }
+        .detail-panel { position: static; display: flex; flex-direction: column; max-height: calc(100dvh - 40px); min-height: 0; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+        .calendar-layout.with-details > .detail-panel { position: sticky; top: 20px; }
+        .detail-heading { flex-shrink: 0; padding: 18px; border-bottom: 1px solid var(--border); }
+        .detail-heading h2 { margin: 14px 0 3px; font-size: 19px; }
+        .detail-heading p { margin: 0; color: var(--muted); font-size: 12px; }
+        .detail-list { display: flex; flex: 1 1 auto; min-height: 0; flex-direction: column; align-items: center; gap: 16px; overflow-y: auto; overscroll-behavior: contain; margin: 0; padding: 18px; list-style: none; }
+        .detail-list .birthday-card { flex: 0 0 auto; width: 100%; max-width: 230px; }
+        .detail-list .birthday-card:hover { transform: none; }
+        .detail-group { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+        .show-summary { min-height: 34px; padding: 6px 10px; font-size: 12px; }
+        .summary-list { align-items: stretch; gap: 0; padding: 8px 14px; }
+        .summary-birthday { border-bottom: 1px solid var(--border); }
+        .summary-birthday:last-child { border-bottom: 0; }
+        .summary-row { display: grid; grid-template-columns: 46px 12px minmax(0, 1fr); align-items: center; gap: 8px; width: 100%; padding: 3px 0; border: 0; border-radius: 4px; background: transparent; color: var(--text); text-align: left; }
+        .summary-row:hover, .summary-row:focus-visible { background: var(--accent-soft); }
+        .summary-row:focus-visible { outline-offset: -2px; }
+        .summary-group-logo { display: block; width: 12px; height: 12px; }
+        .summary-group-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+        .summary-name { display: block; font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
+        .summary-birthday time { color: var(--muted); font-size: 11px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .summary-empty { padding: 12px 0; color: var(--muted); font-size: 13px; }
+        .desktop-summary-option { display: none; align-items: center; gap: 10px; margin: 0; color: var(--muted); font-size: 13px; cursor: pointer; }
+        .desktop-summary-option input { appearance: none; position: relative; flex: 0 0 36px; width: 36px; height: 22px; margin: 0; border: 1px solid var(--border); border-radius: 20px; background: var(--soft); cursor: pointer; }
+        .desktop-summary-option input::before { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--muted); }
+        .desktop-summary-option input:checked { background: var(--accent); border-color: var(--accent); }
+        .desktop-summary-option input:checked::before { left: 17px; background: var(--surface); }
+        .export-with-panel { position: relative; display: flex; align-items: flex-start; gap: 24px; }
+        .export-with-panel > .calendar-month { flex-shrink: 0; }
+        .export-with-panel .detail-panel { position: absolute; inset: 0 0 0 auto; width: 290px; height: auto; max-height: none; overflow: hidden; }
+        .export-with-panel .detail-list { flex: 1 1 auto; height: auto; max-height: none; overflow: hidden; }
+        .export-with-panel .detail-heading h2 { margin-top: 0; }
+        #day-popover { position: fixed; inset: auto; width: min(320px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); margin: 0; padding: 16px; overflow-y: auto; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text); box-shadow: 0 10px 40px rgb(0 0 0 / 18%); }
+        .popover-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .popover-heading h2 { margin: 0; font-size: 16px; }
+        .popover-list { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; padding: 0; list-style: none; }
+        .popover-person { display: flex; align-items: center; gap: 12px; }
+        .popover-person img { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: center top; background: var(--soft); }
+        .popover-person strong { display: block; font-size: 14px; }
+        .popover-person small { color: var(--muted); font-size: 12px; }
+        #popover-details { width: 100%; }
+        @media (max-width: 1000px) {
+            .year-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .with-details .year-grid { grid-template-columns: minmax(0, 1fr); }
+            .day-button, .plain-day { padding: 6px; }
+        }
+        @media (max-width: 800px) {
+            .desktop-summary-option { display: flex; }
+            .show-summary { display: none; }
+            .export-default-label { display: none; }
+            .export-current-label { display: inline; }
+            .export-desktop-button { display: inline-block; }
+            .export-actions { width: 100%; flex-direction: column; }
+            .export-button { width: 100%; min-height: 42px; }
+            .calendar-layout.with-details { grid-template-columns: minmax(0, 1fr); }
+            .detail-panel { position: fixed; inset: 0; z-index: 20; width: 100%; height: 100dvh; max-height: none; border: 0; border-radius: 0; }
+            body.details-open { overflow: hidden; }
+            .detail-heading { padding-top: max(18px, env(safe-area-inset-top)); }
+            .detail-list { padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+            .with-details .year-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 600px) {
+            .filter-field.view-field { flex: 1 1 100%; }
+            .calendar-month { padding: 12px 6px; }
+            .calendar-month-header { gap: 6px; padding-inline: 4px; }
+            .calendar-month-header h2 { font-size: 18px; }
+            .month-table td, .day-button, .plain-day { min-height: 80px; height: 80px; }
+            .day-button, .plain-day { padding: 4px; gap: 6px; height: 100%; }
+            .day-portraits { --portrait-gap: 2px; }
+            .year-grid, .with-details .year-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+            .mini-month { padding: 14px; }
+            .mini-month .month-table td, .mini-month .day-button, .mini-month .plain-day { height: 32px; min-height: 32px; }
+            .mini-month .day-number { font-size: 12px; }
+            .portrait-label { max-width: 110px; font-size: 11px; }
+        }
+        @media (max-width: 380px) {
+            .day-button, .plain-day { padding: 3px; }
+        }
+    </style>
+</head>
+<body id="top">
+    <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+            <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h2m4 0h2m-8 3h2"/></symbol>
+            <symbol id="icon-system" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol>
+            <symbol id="icon-light" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+            <symbol id="icon-dark" viewBox="0 0 24 24"><path d="M20.5 14A8.7 8.7 0 0 1 10 3.5 8.8 8.8 0 1 0 20.5 14Z"/></symbol>
+        </defs>
+    </svg>
+    <a class="skip-link" href="#calendar">Skip to birthdays</a>
+    <header class="page-header shell">
+        <div class="topbar">
+            <span class="brand"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>Birthday calendar</span>
+            <div class="theme-switch" role="group" aria-label="Color theme">
+                <button type="button" data-theme-choice="system" aria-label="Use browser theme" aria-pressed="true" title="Use browser theme"><svg class="icon" aria-hidden="true"><use href="#icon-system"/></svg></button>
+                <button type="button" data-theme-choice="light" aria-label="Use light theme" aria-pressed="false" title="Use light theme"><svg class="icon" aria-hidden="true"><use href="#icon-light"/></svg></button>
+                <button type="button" data-theme-choice="dark" aria-label="Use dark theme" aria-pressed="false" title="Use dark theme"><svg class="icon" aria-hidden="true"><use href="#icon-dark"/></svg></button>
+            </div>
+        </div>
+        <div class="intro">
+            <h1>Love Live! birthdays</h1>
+            <p>Characters &amp; seiyuus, month by month.</p>
+        </div>
+    </header>
+
+    <main class="shell">
+        <div class="filters" role="group" aria-label="Filter birthdays">
+            <div class="filter-field">
+                <label for="groupFilter">Group</label>
+                <select id="groupFilter" disabled><option value="">All groups</option></select>
+            </div>
+            <div class="filter-field type-field">
+                <label for="typeFilter">Show</label>
+                <select id="typeFilter" disabled>
+                    <option value="">Characters &amp; seiyuus</option>
+                    <option value="C">Characters</option>
+                    <option value="V">Seiyuus</option>
+                </select>
+            </div>
+            <div class="filter-field mode-field">
+                <span class="field-label" id="display-label">Display</span>
+                <div class="mode-switch" role="group" aria-labelledby="display-label">
+                    <button type="button" data-display-mode="cards" aria-pressed="true" aria-controls="calendar" disabled>Cards</button>
+                    <button type="button" data-display-mode="calendar" aria-pressed="false" aria-controls="calendar" disabled>Calendar</button>
+                </div>
+            </div>
+            <div class="filter-field view-field" id="calendar-view-field" hidden>
+                <label for="viewFilter">Calendar view</label>
+                <select id="viewFilter" disabled>
+                    <option value="all">All months</option>
+                    <option value="year">Year-at-a-glance</option>
+                </select>
+            </div>
+            <button class="reset-button" id="reset-filters" type="button" hidden>Reset filters</button>
+        </div>
+        <div class="calendar-toolbar">
+            <p id="result-count" role="status" aria-live="polite">Loading birthdays…</p>
+            <nav class="month-nav" id="month-nav" aria-label="Jump to a month"></nav>
+            <div class="year-navigation" id="year-navigation" role="group" aria-label="Calendar year" hidden>
+                <button class="arrow-button" id="previous-year" type="button" aria-label="Previous year">‹</button>
+                <h2 id="year-title"></h2>
+                <button class="arrow-button" id="next-year" type="button" aria-label="Next year">›</button>
+            </div>
+        </div>
+        <p class="export-status" id="export-status" role="status" aria-live="polite" hidden></p>
+        <div id="load-error" class="status-panel" role="alert" hidden>
+            <p>We couldn't load the birthday calendar.</p>
+            <p>Serve this folder over HTTP so the page can read calendar.json and groups.json.</p>
+            <button class="reset-button" id="retry-load" type="button">Try again</button>
+        </div>
+        <noscript><p class="status-panel">Enable JavaScript to load the birthday calendar and filters. Or you can use the <a href="./birthdays.html">Non-Javascript version</a>.</p></noscript>
+        <p class="view-hint" id="view-hint" hidden>Choose a birthday to see who is celebrating.</p>
+        <div class="calendar-layout" id="calendar-layout">
+            <div class="calendar-column" id="calendar-column">
+                <div id="calendar" tabindex="-1" aria-busy="true"></div>
+            </div>
+            <aside class="detail-panel" id="birthday-details" role="region" aria-labelledby="details-title" hidden>
+                <div class="detail-heading">
+                    <button class="reset-button" id="close-details" type="button" data-export-ignore>← Back to calendar</button>
+                    <h2 id="details-title"></h2>
+                    <p id="details-count"></p>
+                </div>
+                <ul class="detail-list" id="details-list"></ul>
+            </aside>
+        </div>
+    </main>
+
+    <div id="day-popover" popover="auto" role="dialog" aria-labelledby="popover-title">
+        <div class="popover-heading">
+            <h2 id="popover-title"></h2>
+            <button class="close-button" type="button" popovertarget="day-popover" popovertargetaction="hide" aria-label="Close birthday preview">×</button>
+        </div>
+        <ul class="popover-list" id="popover-list"></ul>
+        <button class="reset-button" id="popover-details" type="button">View birthday details →</button>
+    </div>
+
+    <footer class="page-footer shell">
+        <div class="footer-links"><span><a href="https://github.com/KronAlt/LL-birthdays">Code on Github</a></span><a href="#top">Back to top ↑</a></div>
+        <div class="theme-switch" role="group" aria-label="Color theme">
+            <button type="button" data-theme-choice="system" aria-label="Use browser theme" aria-pressed="true" title="Use browser theme"><svg class="icon" aria-hidden="true"><use href="#icon-system"/></svg></button>
+            <button type="button" data-theme-choice="light" aria-label="Use light theme" aria-pressed="false" title="Use light theme"><svg class="icon" aria-hidden="true"><use href="#icon-light"/></svg></button>
+            <button type="button" data-theme-choice="dark" aria-label="Use dark theme" aria-pressed="false" title="Use dark theme"><svg class="icon" aria-hidden="true"><use href="#icon-dark"/></svg></button>
+        </div>
+    </footer>
+
+    <script>
+        'use strict';
+
+        const themeButtons = document.querySelectorAll('[data-theme-choice]');
+        function setTheme(theme) {
+            if (theme === 'system') delete document.documentElement.dataset.theme;
+            else document.documentElement.dataset.theme = theme;
+            themeButtons.forEach(button => {
+                button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme));
+            });
+            try {
+                if (theme === 'system') localStorage.removeItem('ll-birthdays-theme');
+                else localStorage.setItem('ll-birthdays-theme', theme);
+            } catch { /* Theme switching also works without persistent storage. */ }
+        }
+        setTheme(document.documentElement.dataset.theme || 'system');
+        themeButtons.forEach(button => button.addEventListener('click', () => setTheme(button.dataset.themeChoice)));
+
+        const groupFilter = document.getElementById('groupFilter');
+        const typeFilter = document.getElementById('typeFilter');
+        const viewFilter = document.getElementById('viewFilter');
+        const modeButtons = document.querySelectorAll('[data-display-mode]');
+        const monthNav = document.getElementById('month-nav');
+        const yearNavigation = document.getElementById('year-navigation');
+        const resetButton = document.getElementById('reset-filters');
+        const calendar = document.getElementById('calendar');
+        const resultCount = document.getElementById('result-count');
+        const loadError = document.getElementById('load-error');
+        const exportStatus = document.getElementById('export-status');
+        let html2canvasPromise = null;
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'];
+        let birthdayData = [];
+        let groups = new Map();
+        let characters = new Map();
+        let displayMode = 'cards';
+        let displayedYear = new Date().getFullYear();
+        let birthdaysByDate = new Map();
+        let detailTrigger = null;
+        let panelState = null;
+        let includeSummaryInDesktopExport = false;
+        let popoverDate = null;
+        let popoverTrigger = null;
+        const details = document.getElementById('birthday-details');
+        const detailsList = document.getElementById('details-list');
+        const layout = document.getElementById('calendar-layout');
+        const popover = document.getElementById('day-popover');
+        const mobilePanel = window.matchMedia('(max-width: 800px)');
+        const backgroundElements = document.querySelectorAll('.page-header, .filters, .calendar-toolbar, #export-status, #view-hint, #calendar-column, .page-footer');
+        monthNames.forEach((name, index) => viewFilter.add(new Option(name, String(index + 1))));
+        viewFilter.add(new Option('Unknown birthdays', 'unknown'));
+
+        function restoreFiltersFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const mode = params.get('mode');
+            // Calendar URLs created before the mode switch still open as calendars.
+            displayMode = mode === 'calendar' || (!mode && (params.has('view') || params.has('year'))) ? 'calendar' : 'cards';
+            const group = params.get('group') || '';
+            groupFilter.value = [...groupFilter.options].some(option => option.value === group) ? group : '';
+            const type = params.get('type');
+            typeFilter.value = type === 'C' || type === 'V' ? type : '';
+            let view = params.get('view') || 'all';
+            if (/^\d{1,2}$/.test(view)) view = String(Number(view));
+            viewFilter.value = [...viewFilter.options].some(option => option.value === view) ? view : 'all';
+            const year = params.get('year') || '';
+            displayedYear = /^\d{4}$/.test(year) && Number(year) >= 1900 && Number(year) <= 2100 ? Number(year) : new Date().getFullYear();
+        }
+
+        function updateURL() {
+            const url = new URL(window.location.href);
+            // Keep unrelated parameters and the fragment when updating our filters.
+            for (const [key, value] of [['mode', displayMode], ['group', groupFilter.value], ['type', typeFilter.value],
+                ['view', viewFilter.value === 'all' ? '' : viewFilter.value], ['year', String(displayedYear)]]) {
+                if (value) url.searchParams.set(key, value);
+                else url.searchParams.delete(key);
+            }
+            if (url.href !== window.location.href) history.replaceState(history.state, '', url);
+        }
+
+        // Data is inserted as text, never as HTML.
+        function element(tag, className, text) {
+            const node = document.createElement(tag);
+            if (className) node.className = className;
+            if (text !== undefined) node.textContent = text;
+            return node;
+        }
+
+        function characterKey(name, group) { return JSON.stringify([name, group]); }
+
+        function makeImage(src, alt, className) {
+            const image = element('img', className);
+            image.alt = alt;
+            image.loading = 'lazy';
+            image.decoding = 'async';
+            image.src = src;
+            return image;
+        }
+
+        function makeCard(person) {
+            const card = element('li', 'birthday-card');
+            card.setAttribute('aria-label', `${person.name_en}, ${person.type === 'C' ? 'character' : 'seiyuu'}`);
+            const portrait = element('div', 'portrait');
+            const photo = makeImage(person.image, person.name_en, 'portrait-photo');
+            photo.width = 110;
+            photo.height = 142;
+            portrait.append(photo);
+
+            const character = characters.get(characterKey(person.character, person.group));
+            if (person.type === 'V' && character) {
+                const characterName = character.name_en === character.name ? character.name : `${character.name_en} (${character.name})`;
+                const badge = element('span', 'character-badge');
+                badge.tabIndex = 0;
+                badge.setAttribute('role', 'img');
+                badge.setAttribute('aria-label', `Voices ${characterName}`);
+                badge.title = characterName;
+                const image = makeImage(character.image, '', 'small-circle');
+                image.width = 38;
+                image.height = 38;
+                badge.append(image, element('span', 'character-tooltip', characterName));
+                portrait.append(badge);
+            }
+
+            const name = element('h3', '', person.name_en || person.name);
+            name.title = person.name;
+            const meta = element('div', 'card-meta');
+            const group = groups.get(person.group);
+            const groupName = group ? group.name : person.group;
+            const groupLogo = element('span', 'group-logo-container');
+            groupLogo.title = groupName;
+            if (group && group.image) {
+                const logo = makeImage(group.image, groupName, 'group-logo');
+                logo.addEventListener('error', () => {
+                    groupLogo.replaceChildren(element('span', 'group-fallback', groupName));
+                }, { once: true });
+                groupLogo.append(logo);
+            } else {
+                groupLogo.append(element('span', 'group-fallback', groupName));
+            }
+
+            const unknown = person.birth === '9999';
+            const date = element(unknown ? 'span' : 'time', 'birthday-date');
+            if (unknown) {
+                date.textContent = 'Unknown';
+                date.title = 'Birthday unknown';
+            } else {
+                const month = Number(person.birth.slice(0, 2));
+                const day = Number(person.birth.slice(2));
+                date.dateTime = `--${person.birth.slice(0, 2)}-${person.birth.slice(2)}`;
+                date.textContent = `${monthNames[month - 1].slice(0, 3)} ${day}`;
+                date.title = `${monthNames[month - 1]} ${day}`;
+            }
+            meta.append(groupLogo, date);
+            card.append(portrait, name, meta);
+            return card;
+        }
+
+        function birthdayCount(count) { return `${count} ${count === 1 ? 'birthday' : 'birthdays'}`; }
+        function dateKey(month, day) { return String(month + 1).padStart(2, '0') + String(day).padStart(2, '0'); }
+        function dateLabel(key) {
+            return key === '9999' ? 'Unknown birthdays' : `${monthNames[Number(key.slice(0, 2)) - 1]} ${Number(key.slice(2))}, ${displayedYear}`;
+        }
+        function makeButton(text, className, label, action) {
+            const button = element('button', className, text);
+            button.type = 'button';
+            if (label) button.setAttribute('aria-label', label);
+            button.addEventListener('click', action);
+            return button;
+        }
+
+        function loadHtml2Canvas() {
+            if (window.html2canvas) return Promise.resolve(window.html2canvas);
+            if (!html2canvasPromise) {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+                script.crossOrigin = 'anonymous';
+                html2canvasPromise = new Promise((resolve, reject) => {
+                    const timeout = setTimeout(() => reject(new Error('Image exporter timed out.')), 15000);
+                    script.onload = () => {
+                        clearTimeout(timeout);
+                        if (window.html2canvas) resolve(window.html2canvas);
+                        else reject(new Error('Image exporter is unavailable.'));
+                    };
+                    script.onerror = () => {
+                        clearTimeout(timeout);
+                        reject(new Error('Could not load the image exporter.'));
+                    };
+                    document.head.append(script);
+                }).catch(error => {
+                    script.remove();
+                    html2canvasPromise = null;
+                    throw error;
+                });
+            }
+            return html2canvasPromise;
+        }
+
+        function makeExportButton(section, monthLabel, filename, desktopLayout = false) {
+            const layoutLabel = desktopLayout ? 'desktop' : 'current';
+            const button = makeButton('', `export-button${desktopLayout ? ' export-desktop-button' : ''}`,
+                `Export ${monthLabel} ${layoutLabel} layout to image`, () => exportMonth(section, button, monthLabel, filename, desktopLayout));
+            if (desktopLayout) button.textContent = 'Export desktop layout to image';
+            else button.append(element('span', 'export-default-label', 'Export to image'),
+                element('span', 'export-current-label', 'Export current layout to image'));
+            button.dataset.exportLayout = layoutLabel;
+            button.dataset.exportIgnore = '';
+            return button;
+        }
+
+        function makeExportControls(section, monthLabel, filename) {
+            const actions = element('div', 'export-actions');
+            actions.dataset.exportIgnore = '';
+            actions.append(makeExportButton(section, monthLabel, filename), makeExportButton(section, monthLabel, filename, true));
+            if (section.matches('.calendar-month:not(.mini-month)')) {
+                const label = element('label', 'desktop-summary-option');
+                const toggle = element('input');
+                toggle.type = 'checkbox';
+                toggle.setAttribute('role', 'switch');
+                toggle.dataset.summaryExport = '';
+                toggle.checked = includeSummaryInDesktopExport;
+                toggle.addEventListener('change', () => {
+                    includeSummaryInDesktopExport = toggle.checked;
+                    document.querySelectorAll('[data-summary-export]').forEach(input => { input.checked = includeSummaryInDesktopExport; });
+                });
+                label.append(toggle, element('span', '', 'Show side panel in desktop image version'));
+                actions.append(label);
+            }
+            return actions;
+        }
+
+        async function prepareExportImages(clonedDocument, clonedSnapshot, scale) {
+            const sources = new Map();
+            function loadSource(url) {
+                if (!sources.has(url)) sources.set(url, new Promise((resolve, reject) => {
+                    const source = new Image();
+                    const timeout = setTimeout(() => reject(new Error('Portrait loading timed out.')), 15000);
+                    source.crossOrigin = 'anonymous';
+                    source.onload = () => { clearTimeout(timeout); resolve(source); };
+                    source.onerror = () => { clearTimeout(timeout); reject(new Error('Could not load portrait.')); };
+                    source.src = url;
+                }));
+                return sources.get(url);
+            }
+            await Promise.all([...clonedSnapshot.querySelectorAll('img')].map(async image => {
+                const style = clonedDocument.defaultView.getComputedStyle(image);
+                const url = image.currentSrc || image.src;
+                let replacement;
+                try {
+                    const source = await loadSource(url);
+                    const width = parseFloat(style.width);
+                    const height = parseFloat(style.height);
+                    if (!width || !height) return;
+                    replacement = clonedDocument.createElement('canvas');
+                    replacement.width = Math.max(1, Math.ceil(width * scale));
+                    replacement.height = Math.max(1, Math.ceil(height * scale));
+                    const context = replacement.getContext('2d');
+                    context.imageSmoothingEnabled = true;
+                    context.imageSmoothingQuality = 'high';
+                    // Crop from the original directly into the export-resolution bitmap.
+                    // Background images in html2canvas 1.x are first resized to CSS pixels.
+                    const fit = style.objectFit === 'contain' ? Math.min : Math.max;
+                    const ratio = fit(replacement.width / source.naturalWidth, replacement.height / source.naturalHeight);
+                    const drawnWidth = source.naturalWidth * ratio;
+                    const drawnHeight = source.naturalHeight * ratio;
+                    const position = style.objectPosition.split(' ');
+                    const offset = (value, space) => value.endsWith('%') ? parseFloat(value) * space / 100 : parseFloat(value) * scale || 0;
+                    context.drawImage(source,
+                        offset(position[0], replacement.width - drawnWidth),
+                        offset(position[1] || '50%', replacement.height - drawnHeight),
+                        drawnWidth, drawnHeight);
+                } catch {
+                    // Retain html2canvas's existing image-loading fallback for unavailable sources.
+                    replacement = clonedDocument.createElement('span');
+                    replacement.style.backgroundImage = `url(${JSON.stringify(url)})`;
+                    replacement.style.backgroundSize = style.objectFit === 'contain' ? 'contain' : 'cover';
+                    replacement.style.backgroundPosition = style.objectPosition;
+                    replacement.style.backgroundRepeat = 'no-repeat';
+                }
+                for (const property of ['display', 'width', 'height', 'border-radius', 'background-color', 'vertical-align', 'flex-shrink']) {
+                    replacement.style.setProperty(property, style.getPropertyValue(property));
+                }
+                image.replaceWith(replacement);
+            }));
+        }
+
+        async function exportMonth(section, button, monthLabel, filename, desktopLayout = false) {
+            const buttonLabel = [...button.childNodes];
+            button.disabled = true;
+            button.textContent = 'Exporting…';
+            button.setAttribute('aria-busy', 'true');
+            exportStatus.hidden = false;
+            exportStatus.textContent = `Exporting ${monthLabel}…`;
+            let snapshot;
+            let exportFrame;
+            try {
+                // Snapshot just this month so changing filters during export is safe.
+                let width = desktopLayout ? 1152 : section.getBoundingClientRect().width;
+                const group = groupFilter.value || 'all-groups';
+                const type = typeFilter.value === 'C' ? 'characters' : typeFilter.value === 'V' ? 'seiyuus' : 'all';
+                let panelCopy = null;
+                let panelScrollTop = 0;
+                if (section.matches('.calendar-month:not(.mini-month)')) {
+                    if (mobilePanel.matches) {
+                        if (desktopLayout && includeSummaryInDesktopExport) panelCopy = makeSummaryPanel(Number(section.dataset.month) - 1);
+                    } else if (!details.hidden && details.parentElement === section.closest('.month-layout')) {
+                        panelCopy = details.cloneNode(true);
+                        panelScrollTop = detailsList.scrollTop;
+                    }
+                }
+                if (panelCopy && desktopLayout) width -= 314;
+                snapshot = element('div');
+                snapshot.inert = true;
+                snapshot.setAttribute('aria-hidden', 'true');
+                Object.assign(snapshot.style, {
+                    position: 'absolute', left: '-100000px', top: '0',
+                    width: `${width + (panelCopy ? 314 : 0) + 32}px`, padding: '16px',
+                    backgroundColor: getComputedStyle(document.body).backgroundColor,
+                    color: getComputedStyle(document.body).color,
+                    colorScheme: getComputedStyle(document.documentElement).colorScheme
+                });
+                const theme = getComputedStyle(document.documentElement);
+                for (const property of ['--page', '--surface', '--soft', '--text', '--muted', '--border', '--accent', '--accent-soft', '--shadow']) {
+                    snapshot.style.setProperty(property, theme.getPropertyValue(property));
+                }
+                const copy = section.cloneNode(true);
+                copy.removeAttribute('id');
+                copy.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+                copy.querySelectorAll('[data-export-ignore], .arrow-button, .character-tooltip, .portrait-label').forEach(node => node.remove());
+                // Avoid html2canvas filling selected dates with their inset-shadow color.
+                copy.querySelectorAll('.day-button[aria-expanded="true"]').forEach(day => { day.style.boxShadow = 'none'; });
+                copy.style.width = `${width}px`;
+                copy.style.margin = '0';
+                const monthHeader = copy.querySelector('.calendar-month-header');
+                if (monthHeader) monthHeader.style.justifyContent = 'center';
+                if (panelCopy) {
+                    panelCopy.hidden = false;
+                    panelCopy.removeAttribute('id');
+                    panelCopy.removeAttribute('aria-modal');
+                    panelCopy.removeAttribute('aria-labelledby');
+                    panelCopy.setAttribute('role', 'region');
+                    panelCopy.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+                    panelCopy.querySelectorAll('[data-export-ignore], .character-tooltip, .portrait-label').forEach(node => node.remove());
+                    const combined = element('div', 'export-with-panel');
+                    combined.append(copy, panelCopy);
+                    snapshot.append(combined);
+                } else snapshot.append(copy);
+                snapshot.querySelectorAll('img').forEach(image => { image.loading = 'eager'; });
+                if (desktopLayout) {
+                    // Use a separate viewport so desktop media queries apply on mobile too.
+                    exportFrame = element('iframe');
+                    exportFrame.title = 'Desktop image export';
+                    exportFrame.inert = true;
+                    exportFrame.setAttribute('aria-hidden', 'true');
+                    Object.assign(exportFrame.style, {
+                        position: 'absolute', left: '-100000px', top: '0',
+                        width: '1280px', height: '900px', border: '0', pointerEvents: 'none'
+                    });
+                    document.body.append(exportFrame);
+                    const exportDocument = exportFrame.contentDocument;
+                    exportDocument.open();
+                    exportDocument.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"></head><body></body></html>');
+                    exportDocument.close();
+                    const base = exportDocument.createElement('base');
+                    base.href = document.baseURI;
+                    exportDocument.head.append(base);
+                    if (document.documentElement.dataset.theme) exportDocument.documentElement.dataset.theme = document.documentElement.dataset.theme;
+                    document.querySelectorAll('style, link[rel="stylesheet"]').forEach(style => exportDocument.head.append(style.cloneNode(true)));
+                    snapshot.style.left = '0';
+                    exportDocument.body.append(snapshot);
+                } else document.body.append(snapshot);
+                if (panelCopy) panelCopy.querySelector('.detail-list').scrollTop = panelScrollTop;
+                const capture = await loadHtml2Canvas();
+                const bounds = snapshot.getBoundingClientRect();
+                const exportWidth = Math.ceil(bounds.width);
+                const exportHeight = Math.ceil(bounds.height);
+                // Prefer 4x output (or the screen's pixel density), bounded for large months.
+                const scale = Math.min(Math.max(4, window.devicePixelRatio || 1),
+                    Math.sqrt(16000000 / (exportWidth * exportHeight)),
+                    16384 / exportWidth, 16384 / exportHeight);
+                const canvas = await capture(snapshot, {
+                    backgroundColor: snapshot.style.backgroundColor,
+                    scale,
+                    useCORS: true,
+                    allowTaint: false,
+                    imageTimeout: 15000,
+                    logging: false,
+                    windowWidth: desktopLayout ? 1280 : window.innerWidth,
+                    windowHeight: desktopLayout ? 900 : window.innerHeight,
+                    onclone: (clonedDocument, clonedSnapshot) => prepareExportImages(clonedDocument, clonedSnapshot, scale)
+                });
+                const blob = await new Promise((resolve, reject) => canvas.toBlob(result => {
+                    if (result) resolve(result);
+                    else reject(new Error('Could not create the JPEG image.'));
+                }, 'image/jpeg', 0.95));
+                const url = URL.createObjectURL(blob);
+                const link = element('a');
+                link.href = url;
+                link.download = `love-live-${filename}-${group}-${type}${desktopLayout ? '-desktop' : ''}.jpg`;
+                document.body.append(link);
+                link.click();
+                link.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 60000);
+                exportStatus.textContent = `${monthLabel} image downloaded.`;
+            } catch (error) {
+                exportStatus.textContent = `Couldn't export ${monthLabel}. Please check your connection and try again.`;
+                console.error('Unable to export month:', error);
+            } finally {
+                snapshot?.remove();
+                exportFrame?.remove();
+                button.disabled = false;
+                button.replaceChildren(...buttonLabel);
+                button.removeAttribute('aria-busy');
+            }
+        }
+
+        function closePopover() {
+            if (popover.matches(':popover-open')) popover.hidePopover();
+            popoverTrigger?.setAttribute('aria-expanded', 'false');
+            popoverDate = null;
+        }
+
+        function makeSummaryPanel(month) {
+            const prefix = String(month + 1).padStart(2, '0');
+            const people = [...birthdaysByDate].filter(([date]) => date.startsWith(prefix)).flatMap(([, people]) => people)
+                .sort((a, b) => Number(a.birth) - Number(b.birth) || (a.name_en || a.name).localeCompare(b.name_en || b.name));
+            const panel = element('aside', 'detail-panel summary-panel');
+            panel.dataset.panelKind = 'summary';
+            const header = element('div', 'detail-heading');
+            header.append(element('h2', '', `${monthNames[month]} birthdays`),
+                element('p', '', `${displayedYear} · ${birthdayCount(people.length)}`));
+            const list = element('ul', 'detail-list summary-list');
+            people.forEach(person => {
+                const row = element('li', 'summary-birthday');
+                const group = groups.get(person.group);
+                const groupName = group?.name || person.group;
+                const button = makeButton('', 'summary-row', `Show birthdays on ${dateLabel(person.birth)}, starting with ${person.name_en || person.name} (${groupName})`, () => {
+                    const day = calendar.querySelector(`.month-layout[data-month="${month + 1}"] .day-button[data-date="${person.birth}"]`);
+                    openDetails(person.birth, day, person);
+                });
+                button.setAttribute('aria-controls', 'birthday-details');
+                const name = element('strong', 'summary-name', person.name_en || person.name);
+                name.title = person.name;
+                const date = element('time', '', `${monthNames[month].slice(0, 3)} ${Number(person.birth.slice(2))}`);
+                date.dateTime = `${displayedYear}-${person.birth.slice(0, 2)}-${person.birth.slice(2)}`;
+                const groupLogo = element('span', 'summary-group-logo');
+                groupLogo.title = groupName;
+                if (group?.image) groupLogo.append(makeImage(group.image, groupName, ''));
+                button.append(date, groupLogo, name);
+                row.append(button);
+                list.append(row);
+            });
+            if (!people.length) list.append(element('li', 'summary-empty', 'No birthdays match this month.'));
+            panel.append(header, list);
+            return panel;
+        }
+
+        function syncSummaryButtons() {
+            document.querySelectorAll('.show-summary').forEach(button => {
+                const expanded = !details.hidden && panelState?.kind === 'summary' && panelState.month === Number(button.dataset.summaryMonth);
+                button.setAttribute('aria-expanded', String(expanded));
+                button.textContent = expanded ? 'Hide side panel' : 'Show side panel';
+                button.setAttribute('aria-label', `${expanded ? 'Hide' : 'Show'} ${monthNames[Number(button.dataset.summaryMonth)]} birthday summary`);
+            });
+        }
+
+        function positionDetailsPanel() {
+            const month = panelState?.kind === 'summary' ? panelState.month : Number(panelState?.date?.slice(0, 2)) - 1;
+            const owner = !details.hidden && !mobilePanel.matches ? calendar.querySelector(`.month-layout[data-month="${month + 1}"]`) : null;
+            const previous = details.closest('.month-layout');
+            if (previous && previous !== owner) previous.classList.remove('with-details');
+            layout.classList.toggle('with-details', !details.hidden && !mobilePanel.matches && !owner);
+            if (owner) owner.classList.add('with-details');
+            const parent = owner || layout;
+            if (details.parentElement !== parent) parent.append(details);
+        }
+
+        function showPanel(trigger, focusPanel = true) {
+            closePopover();
+            detailTrigger?.setAttribute('aria-expanded', 'false');
+            detailTrigger = trigger;
+            document.querySelectorAll('.day-button[aria-expanded="true"]').forEach(button => button.setAttribute('aria-expanded', 'false'));
+            if (trigger?.getAttribute('aria-controls') !== 'day-popover') trigger?.setAttribute('aria-expanded', 'true');
+            details.hidden = false;
+            details.dataset.panelKind = panelState.kind;
+            syncSummaryButtons();
+            syncPanelMode();
+            detailsList.scrollTop = 0;
+            if (focusPanel) document.getElementById('close-details').focus({ preventScroll: true });
+        }
+
+        function openSummary(month, trigger, focusPanel = true) {
+            const summary = makeSummaryPanel(month);
+            panelState = { kind: 'summary', month };
+            document.getElementById('details-title').textContent = summary.querySelector('h2').textContent;
+            document.getElementById('details-count').textContent = summary.querySelector('p').textContent;
+            detailsList.classList.add('summary-list');
+            detailsList.replaceChildren(...summary.querySelector('ul').children);
+            showPanel(trigger, focusPanel);
+        }
+
+        function syncPanelMode() {
+            if (mobilePanel.matches && panelState?.kind === 'summary') {
+                closeDetails(false);
+                return;
+            }
+            const modal = mobilePanel.matches && !details.hidden;
+            positionDetailsPanel();
+            details.setAttribute('role', modal ? 'dialog' : 'region');
+            if (modal) details.setAttribute('aria-modal', 'true');
+            else details.removeAttribute('aria-modal');
+            backgroundElements.forEach(node => { node.inert = modal; });
+            document.body.classList.toggle('details-open', modal);
+            if (modal && !details.contains(document.activeElement)) document.getElementById('close-details').focus({ preventScroll: true });
+        }
+
+        function closeDetails(restoreFocus = true) {
+            details.hidden = true;
+            panelState = null;
+            delete details.dataset.panelKind;
+            layout.classList.remove('with-details');
+            detailTrigger?.setAttribute('aria-expanded', 'false');
+            document.querySelectorAll('.day-button[aria-expanded="true"]').forEach(button => button.setAttribute('aria-expanded', 'false'));
+            syncSummaryButtons();
+            syncPanelMode();
+            if (restoreFocus) (detailTrigger?.isConnected ? detailTrigger : calendar).focus({ preventScroll: true });
+        }
+
+        function openDetails(key, trigger, selectedPerson = null) {
+            const people = birthdaysByDate.get(key) || [];
+            if (!people.length) return;
+            panelState = { kind: 'day', date: key };
+            document.getElementById('details-title').textContent = dateLabel(key);
+            document.getElementById('details-count').textContent = `${birthdayCount(people.length)} · ${groupFilter.value ? groups.get(groupFilter.value)?.name || groupFilter.value : 'All groups'}`;
+            detailsList.classList.remove('summary-list');
+            let selectedCard;
+            detailsList.replaceChildren(...people.map(person => {
+                const card = makeCard(person);
+                card.append(element('p', 'detail-group', `${person.type === 'C' ? 'Character' : 'Seiyuu'} · ${groups.get(person.group)?.name || person.group}`));
+                if (person === selectedPerson) selectedCard = card;
+                return card;
+            }));
+            showPanel(trigger);
+            if (selectedCard) {
+                // Scroll only the card list, keeping the calendar at its current position.
+                detailsList.scrollTop = selectedCard.getBoundingClientRect().top - detailsList.getBoundingClientRect().top
+                    - parseFloat(getComputedStyle(detailsList).paddingTop);
+            }
+        }
+
+        function showDayPopover(key, trigger) {
+            closePopover();
+            popoverDate = key;
+            popoverTrigger = trigger;
+            const people = birthdaysByDate.get(key) || [];
+            document.getElementById('popover-title').textContent = dateLabel(key);
+            document.getElementById('popover-list').replaceChildren(...people.map(person => {
+                const row = element('li', 'popover-person');
+                const text = element('div');
+                text.append(element('strong', '', person.name_en || person.name),
+                    element('small', '', `${person.type === 'C' ? 'Character' : 'Seiyuu'} · ${groups.get(person.group)?.name || person.group}`));
+                row.append(makeImage(person.image, '', ''), text);
+                return row;
+            }));
+            popover.showPopover();
+            trigger.setAttribute('aria-expanded', 'true');
+            const rect = trigger.getBoundingClientRect();
+            const bounds = popover.getBoundingClientRect();
+            popover.style.left = `${Math.max(16, Math.min(rect.left, window.innerWidth - bounds.width - 16))}px`;
+            const below = rect.bottom + 8;
+            const top = below + bounds.height <= window.innerHeight - 16 ? below : rect.top - bounds.height - 8;
+            popover.style.top = `${Math.max(16, Math.min(top, window.innerHeight - bounds.height - 16))}px`;
+            popover.querySelector('.close-button').focus({ preventScroll: true });
+        }
+
+        function changeMonth(month, offset) {
+            const next = new Date(displayedYear, month + offset, 1);
+            if (next.getFullYear() < 1900 || next.getFullYear() > 2100) return;
+            displayedYear = next.getFullYear();
+            viewFilter.value = String(next.getMonth() + 1);
+            displayBirthdays();
+            calendar.focus({ preventScroll: true });
+            calendar.scrollIntoView({ block: 'start' });
+        }
+
+        function makeMonth(month, compact) {
+            const section = element('section', `calendar-month${compact ? ' mini-month' : ''}`);
+            section.dataset.month = String(month + 1);
+            section.setAttribute('aria-labelledby', `month-heading-${month}`);
+            const header = element('div', 'calendar-month-header');
+            const heading = element('h2');
+            heading.id = `month-heading-${month}`;
+            if (compact) {
+                heading.append(makeButton(monthNames[month], 'month-title-button', `Open ${monthNames[month]} ${displayedYear} calendar`, () => changeMonth(month, 0)));
+                header.append(heading);
+            } else {
+                heading.textContent = `${monthNames[month]} ${displayedYear}`;
+                const label = element('div');
+                const count = [...birthdaysByDate].filter(([key]) => key.slice(0, 2) === String(month + 1).padStart(2, '0'))
+                    .reduce((sum, [, people]) => sum + people.length, 0);
+                label.append(heading, element('p', '', birthdayCount(count)));
+                const previous = makeButton('‹', 'arrow-button', `Month before ${monthNames[month]} ${displayedYear}`, () => changeMonth(month, -1));
+                const next = makeButton('›', 'arrow-button', `Month after ${monthNames[month]} ${displayedYear}`, () => changeMonth(month, 1));
+                previous.disabled = displayedYear === 1900 && month === 0;
+                next.disabled = displayedYear === 2100 && month === 11;
+                header.append(previous, label, next);
+            }
+            const table = element('table', 'month-table');
+            table.setAttribute('aria-labelledby', heading.id);
+            const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const head = element('thead');
+            const weekdayRow = element('tr');
+            weekdays.forEach(name => {
+                const th = element('th');
+                th.scope = 'col';
+                const short = element('abbr', '', compact ? name[0] : name.slice(0, 3));
+                short.title = name;
+                th.append(short);
+                weekdayRow.append(th);
+            });
+            head.append(weekdayRow);
+            const body = element('tbody');
+            const firstWeekday = new Date(displayedYear, month, 1).getDay();
+            const days = new Date(displayedYear, month + 1, 0).getDate();
+            const cells = compact ? 42 : Math.ceil((firstWeekday + days) / 7) * 7;
+            const today = new Date();
+            let row;
+            for (let index = 0; index < cells; index++) {
+                if (index % 7 === 0) { row = element('tr'); body.append(row); }
+                const cell = element('td');
+                row.append(cell);
+                const day = index - firstWeekday + 1;
+                if (day < 1 || day > days) {
+                    cell.className = 'empty-day';
+                    cell.setAttribute('aria-hidden', 'true');
+                    continue;
+                }
+                const key = dateKey(month, day);
+                const people = birthdaysByDate.get(key) || [];
+                const content = people.length ? makeButton('', 'day-button has-birthdays',
+                    `${dateLabel(key)}: ${birthdayCount(people.length)}. ${people.map(p => p.name_en || p.name).join(', ')}`,
+                    event => compact ? showDayPopover(key, event.currentTarget) : openDetails(key, event.currentTarget)) : element('div', 'plain-day');
+                content.dataset.date = key;
+                if (people.length) {
+                    if (compact) content.setAttribute('aria-haspopup', 'dialog');
+                    content.setAttribute('aria-expanded', 'false');
+                    content.setAttribute('aria-controls', compact ? 'day-popover' : 'birthday-details');
+                }
+                if (today.getFullYear() === displayedYear && today.getMonth() === month && today.getDate() === day) {
+                    content.classList.add('is-today');
+                    content.setAttribute('aria-current', 'date');
+                }
+                content.append(element('span', 'day-number', String(day)));
+                if (people.length && compact) {
+                    const dot = element('span', 'birthday-dot');
+                    dot.setAttribute('aria-hidden', 'true');
+                    content.append(dot);
+                } else if (people.length) {
+                    const portraits = element('span', 'day-portraits');
+                    portraits.style.setProperty('--portrait-count', people.length);
+                    portraits.setAttribute('aria-hidden', 'true');
+                    people.forEach(person => {
+                        const name = person.name_en || person.name;
+                        const portrait = element('span', 'mini-portrait');
+                        portrait.title = name;
+                        portrait.addEventListener('click', event => {
+                            event.stopPropagation();
+                            openDetails(key, content, person);
+                        });
+                        portrait.append(makeImage(person.image, '', ''), element('span', 'portrait-label', name));
+                        portraits.append(portrait);
+                    });
+                    content.append(portraits);
+                }
+                cell.append(content);
+            }
+            table.append(head, body);
+            section.append(header);
+            if (!compact) {
+                const actions = makeExportControls(section, `${monthNames[month]} ${displayedYear}`, `${monthNames[month].toLowerCase()}-${displayedYear}-calendar`);
+                const summaryButton = makeButton('Show side panel', 'reset-button show-summary', `Show ${monthNames[month]} birthday summary`, event => {
+                    if (!details.hidden && panelState?.kind === 'summary' && panelState.month === month) closeDetails();
+                    else openSummary(month, event.currentTarget);
+                });
+                summaryButton.dataset.summaryMonth = String(month);
+                summaryButton.setAttribute('aria-controls', 'birthday-details');
+                summaryButton.setAttribute('aria-expanded', 'false');
+                actions.prepend(summaryButton);
+                section.append(actions);
+            }
+            section.append(table);
+            if (compact) return section;
+            const monthLayout = element('div', 'month-layout');
+            monthLayout.dataset.month = String(month + 1);
+            monthLayout.append(section);
+            return monthLayout;
+        }
+
+        function renderCards(filtered) {
+            const byMonth = new Map();
+            filtered.forEach(person => {
+                const month = person.birth.slice(0, 2);
+                if (!byMonth.has(month)) byMonth.set(month, []);
+                byMonth.get(month).push(person);
+            });
+
+            const sections = document.createDocumentFragment();
+            const links = document.createDocumentFragment();
+            [...byMonth.keys()].sort().forEach(month => {
+                const people = byMonth.get(month).sort((a, b) =>
+                    Number(a.birth) - Number(b.birth) || (a.name_en || a.name).localeCompare(b.name_en || b.name));
+                const monthName = month === '99' ? 'Unknown birthday' : monthNames[Number(month) - 1];
+                const section = element('section', 'month');
+                section.id = `month-${month}`;
+                section.setAttribute('aria-labelledby', `heading-${month}`);
+                const heading = element('div', 'month-heading');
+                const number = element('span', 'month-number', month === '99' ? '?' : month);
+                number.setAttribute('aria-hidden', 'true');
+                const title = element('h2', '', monthName);
+                title.id = `heading-${month}`;
+                heading.append(number, title, element('span', 'month-count', `${people.length} ${people.length === 1 ? 'birthday' : 'birthdays'}`));
+                heading.append(makeExportControls(section, monthName, `${month === '99' ? 'unknown-birthdays' : monthName.toLowerCase()}-cards`));
+                const list = element('ul', 'birthday-list');
+                people.forEach(person => list.append(makeCard(person)));
+                section.append(heading, list);
+                sections.append(section);
+
+                const link = element('a', '', month === '99' ? 'Unknown' : monthName.slice(0, 3));
+                link.href = `#month-${month}`;
+                link.setAttribute('aria-label', `Jump to ${monthName}`);
+                links.append(link);
+            });
+
+            if (!filtered.length) {
+                sections.append(element('p', 'status-panel', 'No birthdays match these filters. Try another group or type.'));
+            }
+            calendar.replaceChildren(sections);
+            monthNav.replaceChildren(links);
+            resultCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'birthday' : 'birthdays'} · ${groupFilter.value ? groups.get(groupFilter.value)?.name || groupFilter.value : 'All groups'}`;
+        }
+
+        function displayBirthdays() {
+            const summaryMonth = panelState?.kind === 'summary' ? panelState.month : null;
+            closePopover();
+            closeDetails(false);
+            const calendarMode = displayMode === 'calendar';
+            modeButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.displayMode === displayMode)));
+            document.getElementById('calendar-view-field').hidden = !calendarMode;
+            viewFilter.disabled = !calendarMode || groupFilter.disabled;
+            yearNavigation.hidden = !calendarMode;
+            document.getElementById('previous-year').disabled = !calendarMode || displayedYear <= 1900;
+            document.getElementById('next-year').disabled = !calendarMode || displayedYear >= 2100;
+            monthNav.hidden = calendarMode;
+            document.getElementById('view-hint').hidden = !calendarMode;
+            const filtered = birthdayData.filter(person =>
+                (!groupFilter.value || person.group === groupFilter.value) &&
+                (!typeFilter.value || person.type === typeFilter.value));
+            birthdaysByDate = new Map();
+            filtered.forEach(person => {
+                if (!birthdaysByDate.has(person.birth)) birthdaysByDate.set(person.birth, []);
+                birthdaysByDate.get(person.birth).push(person);
+            });
+            birthdaysByDate.forEach(people => people.sort((a, b) => (a.name_en || a.name).localeCompare(b.name_en || b.name)));
+            if (calendarMode) renderCalendar(filtered);
+            else renderCards(filtered);
+            if (calendarMode && !mobilePanel.matches && summaryMonth !== null && viewFilter.value !== 'year' && viewFilter.value !== 'unknown') {
+                const month = /^\d+$/.test(viewFilter.value) ? Number(viewFilter.value) - 1 : summaryMonth;
+                const trigger = document.querySelector(`.show-summary[data-summary-month="${month}"]`);
+                if (trigger) openSummary(month, trigger, false);
+            }
+            resetButton.hidden = !groupFilter.value && !typeFilter.value && (!calendarMode || viewFilter.value === 'all');
+            updateURL();
+        }
+
+        function renderCalendar(filtered) {
+            const view = viewFilter.value;
+            const compact = view === 'year';
+            const months = /^\d+$/.test(view) ? [Number(view) - 1] : Array.from({ length: 12 }, (_, i) => i);
+            const content = document.createDocumentFragment();
+            if (view !== 'unknown') {
+                const calendars = element('div', compact ? 'year-grid' : 'month-stack');
+                months.forEach(month => calendars.append(makeMonth(month, compact)));
+                content.append(calendars);
+            }
+            const unknown = birthdaysByDate.get('9999') || [];
+            if (unknown.length && (view === 'all' || view === 'year' || view === 'unknown')) {
+                const section = element('section', 'unknown-birthdays');
+                const text = element('p');
+                text.append(element('strong', '', 'Unknown birthdays'), document.createTextNode(`${birthdayCount(unknown.length)} without a known date.`));
+                section.append(text, makeButton('See birthdays →', 'reset-button', 'View everyone with an unknown birthday', event => openDetails('9999', event.currentTarget)));
+                content.append(section);
+            }
+            const visiblePeople = filtered.filter(person => view === 'unknown' ? person.birth === '9999' :
+                view === 'all' || view === 'year' || Number(person.birth.slice(0, 2)) === Number(view));
+            if (!visiblePeople.length) content.prepend(element('p', 'status-panel', 'No birthdays match these filters. Try another group, type, or month.'));
+            calendar.replaceChildren(content);
+            document.getElementById('year-title').textContent = `${displayedYear} birthday calendar`;
+            resultCount.textContent = `${birthdayCount(visiblePeople.length)} · ${groupFilter.value ? groups.get(groupFilter.value)?.name || groupFilter.value : 'All groups'}`;
+            document.getElementById('view-hint').textContent = compact ? 'Choose a date for a birthday preview, or a month for its full calendar.' :
+                'Hover over a portrait for a name. Choose a birthday to see everyone celebrating that day.';
+        }
+
+        async function readJSON(url) {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Could not load ${url}: ${response.status}`);
+            const data = await response.json();
+            if (!Array.isArray(data)) throw new Error(`Expected an array in ${url}`);
+            return data;
+        }
+
+        async function loadBirthdays() {
+            loadError.hidden = true;
+            calendar.setAttribute('aria-busy', 'true');
+            resultCount.textContent = 'Loading birthdays…';
+            document.getElementById('retry-load').disabled = true;
+            try {
+                const [people, groupData] = await Promise.all([readJSON('./calendar.json'), readJSON('./groups.json')]);
+                // Preserve the original page's exclusion of School Idol Festival entries.
+                birthdayData = people.filter(person => person.group !== 'llsif');
+                groups = new Map(groupData.map(group => [group.group, group]));
+                characters = new Map(people.filter(person => person.type === 'C')
+                    .map(person => [characterKey(person.name, person.group), person]));
+
+                const groupIds = [...new Set(birthdayData.map(person => person.group))];
+                groupIds.sort((a, b) => (groups.get(a)?.name || a).localeCompare(groups.get(b)?.name || b));
+                groupFilter.replaceChildren(new Option('All groups', ''));
+                groupIds.forEach(id => groupFilter.add(new Option(groups.get(id)?.name || id, id)));
+                groupFilter.disabled = false;
+                typeFilter.disabled = false;
+                modeButtons.forEach(button => { button.disabled = false; });
+                restoreFiltersFromURL();
+                displayBirthdays();
+            } catch (error) {
+                resultCount.textContent = 'Calendar unavailable';
+                loadError.hidden = false;
+                console.error('Unable to load birthday data:', error);
+            } finally {
+                calendar.setAttribute('aria-busy', 'false');
+                document.getElementById('retry-load').disabled = false;
+            }
+        }
+
+        groupFilter.addEventListener('change', displayBirthdays);
+        typeFilter.addEventListener('change', displayBirthdays);
+        viewFilter.addEventListener('change', displayBirthdays);
+        modeButtons.forEach(button => button.addEventListener('click', () => {
+            displayMode = button.dataset.displayMode;
+            displayBirthdays();
+        }));
+        window.addEventListener('popstate', () => {
+            if (!groupFilter.disabled) {
+                restoreFiltersFromURL();
+                displayBirthdays();
+            }
+        });
+        resetButton.addEventListener('click', () => {
+            groupFilter.value = '';
+            typeFilter.value = '';
+            viewFilter.value = 'all';
+            displayBirthdays();
+            groupFilter.focus();
+        });
+        document.getElementById('retry-load').addEventListener('click', loadBirthdays);
+        document.getElementById('close-details').addEventListener('click', () => closeDetails());
+        document.getElementById('previous-year').addEventListener('click', () => { displayedYear--; displayBirthdays(); });
+        document.getElementById('next-year').addEventListener('click', () => { displayedYear++; displayBirthdays(); });
+        document.getElementById('popover-details').addEventListener('click', () => {
+            const key = popoverDate;
+            const trigger = popoverTrigger;
+            openDetails(key, trigger);
+        });
+        popover.addEventListener('toggle', event => {
+            if (event.newState === 'closed') popoverTrigger?.setAttribute('aria-expanded', 'false');
+        });
+        window.addEventListener('resize', closePopover);
+        window.addEventListener('scroll', closePopover);
+        mobilePanel.addEventListener('change', syncPanelMode);
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && !details.hidden && !popover.matches(':popover-open')) {
+                event.preventDefault();
+                closeDetails();
+            }
+            if (event.key === 'Tab' && mobilePanel.matches && !details.hidden) {
+                const focusable = [...details.querySelectorAll('button, [tabindex="0"]')];
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+                else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+            }
+        });
+        loadBirthdays();
+    </script>
+</body>
+</html>

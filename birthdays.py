@@ -12,6 +12,7 @@
 import json
 from collections import defaultdict
 from datetime import datetime
+from html import escape
 
 def load_json_data(filename):
     with open(filename, 'r', encoding='utf-8') as file:
@@ -53,7 +54,7 @@ def process_birthday_data(data):
 
     return birthdays_by_month, character_images
 
-def generate_html(birthdays_by_month, character_images):
+def generate_html(birthdays_by_month, character_images, groups):
     html = """
     <!DOCTYPE html>
     <html lang="en">
@@ -63,10 +64,10 @@ def generate_html(birthdays_by_month, character_images):
         <title>Birthday List</title>
         <style>
             body {
-                font-family: Arial, sans-serif;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             }
             h2 {
-                color: #4CAF50;
+                color: #302c36;
             }
             .month {
                 margin-top: 30px;
@@ -131,21 +132,6 @@ def generate_html(birthdays_by_month, character_images):
         <h1>Character Birthdays by Month</h1>
     """
     
-    #Group logos dictionary
-    group_logos = {
-        "muse": "https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0",
-        "a-rise": "https://i.idol.st/static/img/i_unit/A-RISE.png?&0",
-        "aqours": "https://i.idol.st/static/img/i_unit/Aqours.png?0",
-        "saint-snow": "https://i.idol.st/static/img/i_unit/Saint-Snow.png?&0",
-        "niji": "https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0",
-        "liella": "https://i.idol.st/static/img/i_unit/Liella.png?0",
-        "sunny-passion": "https://i.idol.st/static/img/i_unit/Sunny-Passion.png?&0",
-        "musical": "https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0",
-        "hasu": "https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0",
-        "musical-drama": "https://i.imgur.com/EZ9ncn6.png",
-        "bluebird": "https://i.imgur.com/56JKoVy.png",
-    }
-
     months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "99"]
     months_name = {"01":"January", "02":"February", "03":"March", "04":"April", "05":"May", "06":"June", "07":"July", "08":"August", "09":"September", "10":"October", "11":"November", "12":"December", "99": "Unknown birthday"}
 
@@ -155,8 +141,10 @@ def generate_html(birthdays_by_month, character_images):
             html += f'<div class="month"><h2>{months_name[month]}</h2><div class="birthday-list">'
 
             for person in birthdays_by_month[month]:
-                #Determine the logo based on the group
-                group_logo = group_logos.get(person["group"], "")  # Get logo, default to empty if not found
+                #Use group names and logos from groups.json.
+                group = groups.get(person["group"], {})
+                group_logo = group.get("image", "")
+                group_name = group.get("name", person["group"])
                 
                 #Get character image if person is a seiyuu
                 character_image = ""
@@ -176,11 +164,13 @@ def generate_html(birthdays_by_month, character_images):
                 html +='<div class="group-logo-container">'       
                 #Add the group logo if available
                 if group_logo:
-                    html += f'<img src="{group_logo}" alt="{person["group"]} logo" class="group-logo">'
-                if person["birth"]=="9999": #unknown
-                	html += f'</div></div>'
+                    html += f'<img src="{escape(group_logo)}" alt="{escape(group_name)} logo" title="{escape(group_name)}" class="group-logo">'
                 else:
-                	html += f'{person["birth"][:2]}-{person["birth"][2:]}</div></div>'
+                    html += escape(group_name)
+                if person["birth"]=="9999": #unknown
+                    html += f'</div></div>'
+                else:
+                    html += f'{months_name[month][:3]} {person["birth"][2:]}</div></div>'
                 
                 
 
@@ -198,12 +188,13 @@ def generate_html(birthdays_by_month, character_images):
 def create_birthday_html_file():
     #Load the data from the calendar.json file
     data = load_json_data('calendar.json')
+    groups = {group["group"]: group for group in load_json_data('groups.json')}
     
     #Process the data to group birthdays by month
     birthdays_by_month, character_images = process_birthday_data(data)
     
     #Generate the HTML content
-    html_content = generate_html(birthdays_by_month, character_images)
+    html_content = generate_html(birthdays_by_month, character_images, groups)
     
     #Write the HTML content to a file
     with open("birthdays.html", "w", encoding="utf-8") as file:
