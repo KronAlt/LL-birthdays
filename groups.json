@@ -1,14 +1,14 @@
 [
-	{"group": "muse", "name": "μ's","image": "https://i.idol.st/static/img/i_unit/%CE%BC-s.png?0"},
-    {"group": "a-rise", "name": "A-RISE","image": "https://i.idol.st/static/img/i_unit/A-RISE.png?&0"},
-    {"group": "aqours", "name": "Aqours","image": "https://i.idol.st/static/img/i_unit/Aqours.png?0"},
-    {"group": "saint-snow", "name": "Saint Snow","image": "https://i.idol.st/static/img/i_unit/Saint-Snow.png?&0"},
-    {"group": "niji", "name": "Nijigasaki High School Idol Club","image": "https://i.idol.st/static/img/i_unit/Nijigasaki-High-School.png?0"},
-    {"group": "liella", "name": "Liella!","image": "https://i.idol.st/static/img/i_unit/Liella.png?0"},
-    {"group": "sunny-passion", "name": "Sunny Passion","image": "https://i.idol.st/static/img/i_unit/Sunny-Passion.png?&0"},
-    {"group": "musical", "name": "School Idol Musical","image": "https://i.idol.st/static/img/i_unit/School-Idol-Musical.png?0"},
-    {"group": "hasu", "name": "Hasu no Sora Jogakuin School Idol Club","image": "https://i.idol.st/static/img/i_unit/Hasunosora-Girls-High-School-Idol-Club.png?0"},
-    {"group": "musical-drama", "name": "School Idol Musical the Drama","image": "https://i.imgur.com/EZ9ncn6.png"},
-    {"group": "bluebird", "name": "IKIZULIVE!","image": "https://i.imgur.com/56JKoVy.png"}
+	{"group": "muse", "name": "μ's","image": "images/groups/s-ea402058ae.png"},
+    {"group": "a-rise", "name": "A-RISE","image": "images/groups/a-rise-fe2ba12153.png"},
+    {"group": "aqours", "name": "Aqours","image": "images/groups/aqours-02e94c155d.png"},
+    {"group": "saint-snow", "name": "Saint Snow","image": "images/groups/saint-snow-9b93ae5451.png"},
+    {"group": "niji", "name": "Nijigasaki High School Idol Club","image": "images/groups/nijigasaki-high-school-1c47c2b8ac.png"},
+    {"group": "liella", "name": "Liella!","image": "images/groups/liella-8eb6e6b95b.png"},
+    {"group": "sunny-passion", "name": "Sunny Passion","image": "images/groups/sunny-passion-0e4539db62.png"},
+    {"group": "musical", "name": "School Idol Musical","image": "images/groups/school-idol-musical-c3dc19a9f7.png"},
+    {"group": "hasu", "name": "Hasu no Sora Jogakuin School Idol Club","image": "images/groups/hasunosora-girls-high-school-idol-club-fa2bae2ce8.png"},
+    {"group": "musical-drama", "name": "School Idol Musical the Drama","image": "images/groups/ez9ncn6-e9b1a38e60.png"},
+    {"group": "bluebird", "name": "IKIZULIVE!","image": "images/groups/56jkovy-ef7fb84fd2.png"}
  
 ]
